@@ -1,0 +1,273 @@
+/*
+  SCREEN.CSS
+  This is where styles for on-screen media are declaired.
+  This is a responsive design, so this style sheet establishes the core styles used for all resolutions before declaring
+  the baseline 320px mobile version.
+  
+  --------------------------------------------------------------------------------------------------------------------------
+  FILE INFO
+  Last updated:     2011/08/19
+  Last updated by:  Matt Wilcox
+
+  --------------------------------------------------------------------------------------------------------------------------
+  STYLEGUIDE
+  Tabs are set to 2 spaces.
+
+  Rules obey the following anatomy:
+
+    selector {
+      POSITIONING LINE [position,top,left]
+      BOX MODEL LINE [display,margin,border,padding,width, ETC]
+      TYPOGRAPHY LINE [font,text-indent,font-style, ETC]
+      PREFIXED PROPERTIES [-moz-,-webkit-, ETC] }
+
+  This file is divided into the following sections:
+
+    =global_reset         |  Brings all browsers into line 
+    =vendor_enhancements  |  Fix various issues and/or enable enhancements
+    =typography           |  How type looks and behaves
+    =base_rules           |  Styling of raw elments
+    =modules              |  Discrete components of a page [sub-divided]
+    =layout               |  How modules are laid out on given pages [sub-divided]
+
+  Units of measurement should always be:
+
+    % or no unit for any layout - you do not know where your module is going on a page, so you don't know its absolute size.
+    unitless for line-heights
+    rems for type - with em fallbacks
+
+    See http://csswizardry.com/2011/12/measuring-and-sizing-uis-2011-style/ for details.
+
+  Don't use IDs in selectors, instead use attribute selectors:
+
+    [id='whatever'] { ... }
+
+    This avoids specificity problems later on as the attribute selector has the same weight as a class
+
+  ----------------------------------------------------------------------------------------------------------------------- */
+  
+/*
+  =global_reset ---------------------------------------------------------------------------------------------------------
+  NOTE:       Based on Eric Meyers CSS Reset 2.0
+  REFERENCE:  http://meyerweb.com/eric/tools/css/reset/
+  ----------------------------------------------------------------------------------------------------------------------- */
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed, 
+  figure, figcaption, footer, header, hgroup, 
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+    margin: 0; padding: 0; border: 0;
+    font-size: 100%; font: inherit; vertical-align: baseline; }
+  
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure, 
+  footer, header, hgroup, menu, nav, section {
+    display: block; }
+  ol, ul {
+    list-style: none; }
+  blockquote, q {
+    quotes: none; }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: ''; content: none; }
+  table {
+    border-collapse: collapse; border-spacing: 0; }
+
+/*
+  =vendor_enhancements --------------------------------------------------------------------------------------------------
+  NOTE: Fix various browser issues, and switch some vendor specific nicities on/off
+  ----------------------------------------------------------------------------------------------------------------------- */
+  html {
+    -webkit-text-size-adjust : 100%;
+    -ms-text-size-adjust : 100%;
+    text-rendering: optimizeLegibility; /* using kerning and ligatures http://www.aestheticallyloyal.com/public/optimize-legibility/ */ }
+
+  /* fix webkit to stop it rendering text too thickly in cases where there is light text on dark backgrounds
+     http://orderedlist.com/our-writing/blog/articles/webkit-font-smoothing/
+  body { -webkit-font-smoothing: antialiased; } */
+
+  a:link { 
+    -webkit-tap-highlight-color : #999; }
+  ::-webkit-selection,
+  ::-moz-selection,
+  ::selection { 
+    background : #999; color : #fff; text-shadow : none; }
+   
+  /* kill input=search default styling on webkit
+  input[type=search] {
+    -webkit-appearance : none; }
+  input[type="search"]::-webkit-search-decoration, 
+  input[type="search"]::-webkit-search-cancel-button {
+    display : none; } */
+
+  ::-webkit-input-placeholder,
+  input:-moz-placeholder {
+    padding : 10px;
+    font-size : .875em; line-height : 1.4; }
+
+  input, textarea {
+    -webkit-box-sizing : border-box;
+    -moz-box-sizing : border-box;
+    -o-box-sizing : border-box;
+    -ms-box-sizing : border-box;
+    box-sizing : border-box; }
+     
+/*
+  =typography -----------------------------------------------------------------------------------------------------------
+  NOTE:       I've found that margin-top applied to everything is a pain - it often messes up layout and requires jumping
+              through hoops to fix, so I've stopped doing this as a default and now add top margin manually when required.
+  REFERENCE:  Based on http://alistapart.com/articles/settingtypeontheweb/
+                       http://24ways.org/2006/compose-to-a-vertical-rhythm/
+  ----------------------------------------------------------------------------------------------------------------------- */
+  
+  /* custom fonts
+   * The following fonts included are copyrighted by the vendor listed below.
+   * @vendor:     Anton Koovit
+   * @vendorurl:  http://anton.korkork.com/
+   * @licenseurl: http://www.fontsquirrel.com/license/arvo */
+   
+  @font-face {
+    font-family: 'ArvoRegular';
+    src: url('../fonts/Arvo-Regular-webfont.eot');
+    src: url('../fonts/Arvo-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Arvo-Regular-webfont.woff') format('woff'),
+         url('../fonts/Arvo-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Arvo-Regular-webfont.svg#ArvoRegular') format('svg');
+    font-weight: normal; font-style: normal;
+  }
+   
+  html { /* font-size: 16px, line-height: 22px */
+    font : 100%/1.375 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+     
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom : 1.375rem; /* 22px */
+    font-family : Arvo, "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight : normal; text-transform : uppercase; }
+  
+  h1 {
+    /* fallback line for browsers that dont support REM units */ font-size : 2em; line-height : 1.375em;
+    font-size : 2rem; /* 32px */ line-height : 2.75rem; /* 44px */ }
+  h2 {
+    /* fallback line for browsers that dont support REM units */ font-size : 1.625em; line-height : 1.6923076923em;
+    font-size : 1.625rem; /* 26px */ line-height : 2.75rem; /* 44px */ }
+  h3, h4, h5, h6 { 
+    /* fallback line for browsers that dont support REM units */ font-size : 1.25em; line-height : 1.1em;
+    font-size : 1.25rem; /* 20px */ line-height : 1.375rem; /* 22px */ }
+  p, ul {
+    /* fallback line for browsers that dont support REM units */ margin-bottom : 1.375em;
+    margin-bottom : 1.375rem; }
+   
+/*
+  =base_rules -----------------------------------------------------------------------------------------------------------
+  NOTE:  This section styles "default" elements, that is, how a <p> or <em> etc look by default, without
+         any page or class specific over-rides.
+  ----------------------------------------------------------------------------------------------------------------------- */
+  
+/*
+  =html =body */
+  html {
+    background-color : #ddd; color : #666; }
+  body {
+    width : 90%; margin : 0 auto; }
+
+/*
+  =p */
+
+/*
+  =q */
+  q {
+    quotes: '“' '”' '‘' '’'; } /* open then close, then new nesting level */
+  q:before {
+    content: open-quote; }
+  q:after {
+    content: close-quote; }
+
+/*
+  =a */
+  a:link    { color : #36b; text-decoration : none; }
+  a:visited { color : #36b; text-decoration : none; }
+  a:hover   { text-decoration : underline; }
+  a:focus   { background-color : #ff9; color : #333; }
+  a:active  { background-color : #ff6; color : #333; }
+  /* :target   { background-color : #ff6; } */
+   
+/*
+  =img */
+  img { /* to pull the top of the image inline with the baseline we move it up with a negative margin */
+    display: block; max-width : 100%; margin-top : -4px; }
+  #target_hilight {
+    position : absolute; }
+  a img {
+    display : block; margin : 0; }
+     
+/*
+  =blockquote */
+  blockquote {
+    margin-bottom : 1em; }
+
+/*
+  =sup */
+  sup {
+    vertical-align : top; font-size : .75em; }
+/*
+  =sub */
+  sub {
+    vertical-align : bottom; font-size : .75em; }
+
+/*
+  =em */
+  em {
+    font-style : italic; }
+
+/*
+  =strong */
+  strong {
+    font-weight : bold; }
+
+/*
+  =code */
+  code {
+    font-family : Courier; font-size : .85em; color : #393; }
+
+/*
+  =li */
+  li {
+    list-style : outside disc;  }
+  
+/* =span */
+  label span {
+    display : block; }
+  label.boolean span {
+    display : inline; }
+   
+/*
+  =modules --------------------------------------------------------------------------------------------------------------
+  NOTE:  Modules are discrete sections of data that may be used on any page, e.g., "Latest News"
+  ----------------------------------------------------------------------------------------------------------------------- */     
+  
+  html { background-image : url(../images/_baseline-22.png); }
+/* website header */
+  [id='site_context'] {
+    margin : 0; padding-top : 1.375em; /* em fallback */ padding-top : 1.375rem; }
+  [id='site_context'] .title {
+    margin : 0; }
+     
+/* website footer */
+     
+/* generic components */
+
+/*
+  =layout ---------------------------------------------------------------------------------------------------------------
+  NOTE:       How modules are laid out on specific pages
+  ----------------------------------------------------------------------------------------------------------------------- */
+
+/* =320 -----------------------------------------------------------------------------------------------------------------
+   NOTE:       layout for 320 only
+   ---------------------------------------------------------------------------------------------------------------------- */
