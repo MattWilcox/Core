@@ -67,6 +67,13 @@
   table {
     border-collapse: collapse; border-spacing: 0; }
 
+  /* form resets */
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  textarea {
+    border: 0; }
+
 /*
   =vendor_enhancements --------------------------------------------------------------------------------------------------
   NOTE: Fix various browser issues, and switch some vendor specific nicities on/off
@@ -130,7 +137,7 @@
     font-weight: normal; font-style: normal;
   }
    
-  html { /* font-size: 16px, line-height: 22px */
+  html, input, select, textarea { /* font-size: 16px, line-height: 22px */
     font: 100%/1.375 "Helvetica Neue", Helvetica, Arial, sans-serif; }
      
   h1, h2, h3, h4, h5, h6 {
@@ -209,7 +216,7 @@
     display : block; }
   label.boolean span {
     display : inline; }
-   
+
 /*
   =modules --------------------------------------------------------------------------------------------------------------
   NOTE: Modules are discrete sections of data that may be used on any page, e.g., "Latest News"
