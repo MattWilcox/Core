@@ -14,7 +14,7 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
 
 // Media Queries Polyfill http://www.modernizr.com/docs/#load
 Modernizr.load({
-  test : Modernizr.mq('(min-width)'),
+  test : Modernizr.mq('(min-width: 0px)'),
   nope : ['/assets/javascript/polyfills/respond.min.js']
 });
 

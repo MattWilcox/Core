@@ -192,7 +192,8 @@
   sub {
     vertical-align : bottom; font-size : .75em; }
    
-/* =a */
+/*
+  =a */
   a:link    { color : #9b9; text-decoration : none; }
   a:visited { color : #9b9; text-decoration : none; }
   a:hover   { text-decoration : underline; }
@@ -211,7 +212,8 @@
      
 /* =div */
   
-/* =span */
+/*
+  =span */
   label span {
     display : block; }
   label.boolean span {
