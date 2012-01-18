@@ -1,22 +1,21 @@
 /*
   SCREEN.CSS
   This is where styles for on-screen media are declaired.
-  This is a responsive design, so this style sheet establishes the core styles used for all resolutions before declaring
-  the baseline 320px mobile version.
+  This style sheet establishes the core styles used for all resolutions before declaring the baseline 320px mobile layout.
   
   --------------------------------------------------------------------------------------------------------------------------
   FILE INFO
-  Last updated:     2011/08/19
+  Last updated:     2012/01/18
   Last updated by:  Matt Wilcox
 
   --------------------------------------------------------------------------------------------------------------------------
   STYLEGUIDE
-  Tabs are set to 2 spaces.
+  Indentation uses tabs [why: http://lea.verou.me/2012/01/why-tabs-are-clearly-superior/]
 
   Rules obey the following anatomy:
 
     selector {
-      POSITIONING LINE [position,top,left]
+      POSITIONING LINE [position,top,left,clear, ETC]
       BOX MODEL LINE [display,margin,border,padding,width, ETC]
       TYPOGRAPHY LINE [font,text-indent,font-style, ETC]
       PREFIXED PROPERTIES [-moz-,-webkit-, ETC] }
@@ -32,23 +31,17 @@
 
   Units of measurement should always be:
 
-    % or no unit for any layout - you do not know where your module is going on a page, so you don't know its absolute size.
-    unitless for line-heights
-    rems for type - with em fallbacks
+    LAYOUT:       % or no unit - you do not know where your module is going on a page, so you don't know its absolute size.
+    LINE-HEIGHTS: unitless, so the line height is a multiple of the current element's font-size
+    TYPE:         rems for type, with em fallbacks
 
     See http://csswizardry.com/2011/12/measuring-and-sizing-uis-2011-style/ for details.
-
-  Don't use IDs in selectors, instead use attribute selectors:
-
-    [id='whatever'] { ... }
-
-    This avoids specificity problems later on as the attribute selector has the same weight as a class
 
   ----------------------------------------------------------------------------------------------------------------------- */
   
 /*
   =global_reset ---------------------------------------------------------------------------------------------------------
-  NOTE:       Based on Eric Meyers CSS Reset 2.0
+  NOTE:       Based on Eric Meyers CSS Reset 2.0 - with a couple of edits to make it less draconian
   REFERENCE:  http://meyerweb.com/eric/tools/css/reset/
   ----------------------------------------------------------------------------------------------------------------------- */
   html, body, div, span, applet, object, iframe,
@@ -65,19 +58,12 @@
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
     margin: 0; padding: 0; border: 0;
-    font-size: 100%; font: inherit; vertical-align: baseline; }
+    font-size: 100%; font: inherit; }
   
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure, 
   footer, header, hgroup, menu, nav, section {
     display: block; }
-  ol, ul {
-    list-style: none; }
-  blockquote, q {
-    quotes: none; }
-  blockquote:before, blockquote:after,
-  q:before, q:after {
-    content: ''; content: none; }
   table {
     border-collapse: collapse; border-spacing: 0; }
 
@@ -86,8 +72,8 @@
   NOTE: Fix various browser issues, and switch some vendor specific nicities on/off
   ----------------------------------------------------------------------------------------------------------------------- */
   html {
-    -webkit-text-size-adjust : 100%;
-    -ms-text-size-adjust : 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
     text-rendering: optimizeLegibility; /* using kerning and ligatures http://www.aestheticallyloyal.com/public/optimize-legibility/ */ }
 
   /* fix webkit to stop it rendering text too thickly in cases where there is light text on dark backgrounds
@@ -99,26 +85,26 @@
   ::-webkit-selection,
   ::-moz-selection,
   ::selection { 
-    background : #999; color : #fff; text-shadow : none; }
+    background: #999; color: #fff; text-shadow: none; }
    
   /* kill input=search default styling on webkit
   input[type=search] {
     -webkit-appearance : none; }
   input[type="search"]::-webkit-search-decoration, 
   input[type="search"]::-webkit-search-cancel-button {
-    display : none; } */
+    display: none; } */
 
   ::-webkit-input-placeholder,
   input:-moz-placeholder {
-    padding : 10px;
-    font-size : .875em; line-height : 1.4; }
+    padding: 10px;
+    font-size: .875em; line-height: 1.4; }
 
   input, textarea {
-    -webkit-box-sizing : border-box;
-    -moz-box-sizing : border-box;
-    -o-box-sizing : border-box;
-    -ms-box-sizing : border-box;
-    box-sizing : border-box; }
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box; }
      
 /*
   =typography -----------------------------------------------------------------------------------------------------------
@@ -145,24 +131,25 @@
   }
    
   html { /* font-size: 16px, line-height: 22px */
-    font : 100%/1.375 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    font: 100%/1.375 "Helvetica Neue", Helvetica, Arial, sans-serif; }
      
   h1, h2, h3, h4, h5, h6 {
-    margin-bottom : 1.375rem; /* 22px */
-    font-family : Arvo, "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight : normal; text-transform : uppercase; }
+    /* em fallback */ margin-top: 1.375em; margin-bottom : 1.375em;
+    margin-top: 1.375rem; margin-bottom : 1.375rem;
+    font-family: ArvoRegular, "Helvetica Neue", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: normal; }
   
   h1 {
-    /* fallback line for browsers that dont support REM units */ font-size : 2em; line-height : 1.375em;
-    font-size : 2rem; /* 32px */ line-height : 2.75rem; /* 44px */ }
+    /* em fallback */ font-size: 2em;
+    font-size: 2rem; line-height: 1.375; }
   h2 {
-    /* fallback line for browsers that dont support REM units */ font-size : 1.625em; line-height : 1.6923076923em;
-    font-size : 1.625rem; /* 26px */ line-height : 2.75rem; /* 44px */ }
-  h3, h4, h5, h6 { 
-    /* fallback line for browsers that dont support REM units */ font-size : 1.25em; line-height : 1.1em;
-    font-size : 1.25rem; /* 20px */ line-height : 1.375rem; /* 22px */ }
-  p, ul {
-    /* fallback line for browsers that dont support REM units */ margin-bottom : 1.375em;
-    margin-bottom : 1.375rem; }
+    /* em fallback */ font-size: 1.75em;
+    font-size: 1.75rem; line-height: 1.5714285714; }
+  h3, h4, h5, h6 {
+    /* em fallback */ font-size: 1.375em;
+    font-size: 1.375rem; line-height : 1; }
+  p, ul { 
+    /* em fallback */ margin-bottom: 1.375em;
+    margin-bottom: 1.375rem; }
    
 /*
   =base_rules -----------------------------------------------------------------------------------------------------------
@@ -190,29 +177,6 @@
     content: close-quote; }
 
 /*
-  =a */
-  a:link    { color : #36b; text-decoration : none; }
-  a:visited { color : #36b; text-decoration : none; }
-  a:hover   { text-decoration : underline; }
-  a:focus   { background-color : #ff9; color : #333; }
-  a:active  { background-color : #ff6; color : #333; }
-  /* :target   { background-color : #ff6; } */
-   
-/*
-  =img */
-  img { /* to pull the top of the image inline with the baseline we move it up with a negative margin */
-    display: block; max-width : 100%; margin-top : -4px; }
-  #target_hilight {
-    position : absolute; }
-  a img {
-    display : block; margin : 0; }
-     
-/*
-  =blockquote */
-  blockquote {
-    margin-bottom : 1em; }
-
-/*
   =sup */
   sup {
     vertical-align : top; font-size : .75em; }
@@ -220,26 +184,25 @@
   =sub */
   sub {
     vertical-align : bottom; font-size : .75em; }
-
+   
+/* =a */
+  a:link    { color : #9b9; text-decoration : none; }
+  a:visited { color : #9b9; text-decoration : none; }
+  a:hover   { text-decoration : underline; }
+  a:focus   { background-color : #ff9; color : #333; }
+  a:active  { background-color : #ff6; color : #333; }
+  /* :target   { background-color : #ff6; } */
+   
 /*
-  =em */
-  em {
-    font-style : italic; }
-
-/*
-  =strong */
-  strong {
-    font-weight : bold; }
-
-/*
-  =code */
-  code {
-    font-family : Courier; font-size : .85em; color : #393; }
-
-/*
-  =li */
-  li {
-    list-style : outside disc;  }
+  =img */
+  img {
+    max-width : 100%; }
+  #target_hilight {
+    position : absolute; }
+  a img {
+    margin : 0; }
+     
+/* =div */
   
 /* =span */
   label span {
@@ -249,25 +212,26 @@
    
 /*
   =modules --------------------------------------------------------------------------------------------------------------
-  NOTE:  Modules are discrete sections of data that may be used on any page, e.g., "Latest News"
+  NOTE: Modules are discrete sections of data that may be used on any page, e.g., "Latest News"
   ----------------------------------------------------------------------------------------------------------------------- */     
+
+/* while we're building, let's see a baseline */
+  html {
+    background-image : url(../images/_baseline-22.png); }
   
-  html { background-image : url(../images/_baseline-22.png); }
 /* website header */
-  [id='site_context'] {
-    margin : 0; padding-top : 1.375em; /* em fallback */ padding-top : 1.375rem; }
-  [id='site_context'] .title {
+  #site_context  {
+    margin-bottom : 0; }
+  #site_context .title {
     margin : 0; }
      
 /* website footer */
+  #content {
+    margin-top : 2em; padding-top : 1.5em; border-top : 1px solid #fff; }
      
 /* generic components */
-
+     
 /*
   =layout ---------------------------------------------------------------------------------------------------------------
   NOTE:       How modules are laid out on specific pages
   ----------------------------------------------------------------------------------------------------------------------- */
-
-/* =320 -----------------------------------------------------------------------------------------------------------------
-   NOTE:       layout for 320 only
-   ---------------------------------------------------------------------------------------------------------------------- */
