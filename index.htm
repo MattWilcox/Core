@@ -1,92 +1,92 @@
 <!DOCTYPE html>
-<html lang="en" class="home">
+<html lang="en" class="styleguide">
 <head>
-  <!-- meta information -->
-  <meta charset="utf-8" />
-  <meta name="author"
-        content="AUTHOR" />
-  <meta name="description"
-        content="DESCRIPTION" />
-  <meta name="robots"
-        content="index,follow" />
-  <meta name="revisit-after"
-        content="14 days" />
-  <meta name="country"
-        content="UK" />
-  <meta name="language"
-        content="en-GB" />
+	<!-- meta information -->
+	<meta charset="utf-8" />
+	<meta name="author"
+	      content="AUTHOR" />
+	<meta name="description"
+	      content="DESCRIPTION" />
+	<meta name="robots"
+	      content="index,follow" />
+	<meta name="revisit-after"
+	      content="14 days" />
+	<meta name="country"
+	      content="UK" />
+	<meta name="language"
+	      content="en-GB" />
 
-  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-  <meta name="viewport"
-        content="width=device-width,initial-scale=1">
+	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
+	<meta name="viewport"
+	      content="width=device-width,initial-scale=1">
 
-  <!-- Styling for all browsers -->
-  <link rel="stylesheet" media="screen" href="/assets/css/screen.core.css" />
-  <link rel="stylesheet" media="print"  href="/assets/css/print.css" />
+	<!-- Styling for all devices -->
+	<link rel="stylesheet" media="screen" href="/assets/css/screen.core.css" />
+	<link rel="stylesheet" media="print"  href="/assets/css/print.css" />
 
-  <!-- Styling for progressively larger displays -->
-  <link rel="stylesheet" media="only screen and (min-width: 480px)"  href="/assets/css/screen.480.css" />
-  <link rel="stylesheet" media="only screen and (min-width: 768px)"  href="/assets/css/screen.768.css" />
-  <link rel="stylesheet" media="only screen and (min-width: 992px)"  href="/assets/css/screen.992.css" />
-  <link rel="stylesheet" media="only screen and (min-width: 1382px)" href="/assets/css/screen.1382.css" />
+	<!-- Styling for progressively larger displays
+	     NOTE:      breakpoints are decided based on the design, not device
+	     REFERENCE: http://mattwilcox.net/archive/entry/id/1075/ -->
+	<link rel="stylesheet" media="only screen and (min-width: 480px)"  href="/assets/css/screen.480.css" />
 
-  <!-- Favicon for Retina iThings -->
-  <link rel="apple-touch-icon-precomposed"
-        sizes="114x114"
-        href="/assets/images/apple-touch-icon.png" />
-  <!-- Favicon for old iThings and Android -->
-  <link rel="apple-touch-icon-precomposed"
-        href="/assets/images/apple-touch-icon.png" />
-  <!-- Favicon for Nokia -->
-  <link rel="shortcut icon"
-        href="/assets/images/apple-touch-icon.png" />
-  <!-- Favicon for everything else -->
-  <link rel="shortcut icon"
-        href="/favicon.ico"
-        type="image/x-icon" />
-        
-  <!-- The Adaptive-Images JavaScript
-       REFERENCE: http://adaptive-images.com -->
-  <script>document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/';</script>
-        
-  <!-- google analytics
-       NOTE:      This goes in the head because it's the asynchronous loader, read more here:
-       REFERENCE: http://code.google.com/apis/analytics/docs/tracking/asyncTracking.html -->
-  <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'CODEHERE']);
-    _gaq.push(['_trackPageview']);
-    _gaq.push(['_trackPageLoadTime']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+	<!-- Favicon for Retina iThings -->
+	<link rel="apple-touch-icon-precomposed"
+	      sizes="114x114"
+	      href="/assets/images/apple-touch-icon.png" />
+	<!-- Favicon for old iThings and Android -->
+	<link rel="apple-touch-icon-precomposed"
+	      href="/assets/images/apple-touch-icon.png" />
+	<!-- Favicon for Nokia -->
+	<link rel="shortcut icon"
+	      href="/assets/images/apple-touch-icon.png" />
+	<!-- Favicon for everything else -->
+	<link rel="shortcut icon"
+	      href="/favicon.ico"
+	      type="image/x-icon" />
+				
+	<!-- The Adaptive-Images JavaScript
+	     NOTE:      Used to automatically provide re-scaled images appropriate to the visitors device
+	     REFERENCE: http://adaptive-images.com -->
+	<script>document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/';</script>
+				
+	<!-- google analytics
+	     NOTE:      This goes in the head because it's the asynchronous loader, read more here:
+	     REFERENCE: http://code.google.com/apis/analytics/docs/tracking/asyncTracking.html -->
+	<script>
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'CODEHERE']);
+		_gaq.push(['_trackPageview']);
+		_gaq.push(['_trackPageLoadTime']);
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 
-  <!-- Modernizr also goes in the head, to allow the HTML5 shiv to work for IE, and prevent FOUC.
-       REFERENCE: http://www.modernizr.com/docs/#installing -->
-  <script src="/assets/javascript/modernizr.custom.65394.js"></script>
+	<!-- Modernizr also goes in the head, to allow the HTML5 shiv to work for IE, and prevent FOUC.
+	     REFERENCE: http://www.modernizr.com/docs/#installing -->
+	<script src="/assets/javascript/modernizr.custom.65394.js"></script>
 
-  <title>PAGE TITLE</title>
+	<title>PAGE TITLE</title>
 </head>
 
 <body lang="en-GB" class="home">
-  <div class="container">
-    <div id="site_context" class="html5_header">
-      <h1 class="heading"><a href="/">WEBSITE TITLE<span></span></a></h1>
-      <p class="tagline">Tagline, or brief introduction to the website.</p>
-    </div><!-- #site_context.html5_header -->
-  </div><!-- .container -->
+	<div class="container">
+		<div id="site_context" class="html5_header">
+			<h1 class="heading"><a href="/">WEBSITE TITLE<span></span></a></h1>
+			<p class="tagline">Tagline, or brief introduction to the website.</p>
+		</div><!-- #site_context.html5_header -->
+	</div><!-- .container -->
 
-  <!-- javascript
-       NOTE:      Javascript goes at the bottom of the page to enhance the perception of speed with page load.
-                  Most browsers are limited to two simultaneous http requests, so if we loaded the JS before the HTML
-                  the page would appear to load slowly (as it loads non-visible data before the visible data).
-       REFERENCE: http://developer.yahoo.com/performance/rules.html#js_bottom
-       NOTE:      I usually use lazy-loading so that a JS file scans the DOM, knows what JS files are needed and loads only
-                  those. JS manages itself, the HTML doesn't need to change, no unused resources are ever loaded. -->
+	<!-- javascript
+			 NOTE:      Javascript goes at the bottom of the page to enhance the perception of speed with page load.
+									Most browsers are limited to two simultaneous http requests, so if we loaded the JS before the HTML
+									the page would appear to load slowly (as it loads non-visible data before the visible data).
+			 REFERENCE: http://developer.yahoo.com/performance/rules.html#js_bottom
+			 NOTE:      I usually use lazy-loading so that a JS file scans the DOM, knows what JS files are needed and loads only
+									those. JS manages itself, the HTML doesn't need to change, no unused resources are ever loaded. -->
 
-  <script src="/assets/javascript/initiate.js"></script>
+	<script src="/assets/javascript/initiate.js"></script>
 </body>
 </html>
