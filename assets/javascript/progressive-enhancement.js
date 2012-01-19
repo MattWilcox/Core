@@ -81,6 +81,22 @@ $(document).ready(function(){
 		}, animation_speed, "swing", targetHighlight(target));
 		return false;
 	});
+	
+/*
+	=keyboard focus on labels */
+	$("input,select,textarea").focus(function(){
+		$(this).parent().addClass('focus');
+	}).blur(function(){
+		$(this).parent().removeClass('focus');
+	});
+
+/*
+	=keyboard accessible drop-nav */
+	$("li > a").focus(function(){
+		$(this).parents('ul').addClass('focus');
+	}).blur(function(){
+		$(this).parents('ul').removeClass('focus');
+	});
 
 /*
 	=events to run after the entire page has finished loading */
