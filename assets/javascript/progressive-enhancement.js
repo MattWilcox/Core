@@ -1,70 +1,82 @@
-// progressive-enhancement.js
-//
-// Responsible JavaScript enhancements.
-// The aim of this file is to provide functionality niceties in the event that JavaScript is enabled on the client.
-// In no case should JavaScript be required for the website to work. In no case should any JavaScript be in-line or embeded in HTML.
+/*
+	PROGRESSIVE-ENHANCEMENT.JS
+	Responsible JavaScript enhancements.
+
+	The aim of this file is to provide functionality niceties in the event that JavaScript is enabled on the client.
+	In no case should JavaScript be required for the website to work. In no case should any JavaScript be in-line
+	or embeded in HTML.
+	
+	--------------------------------------------------------------------------------------------------------------------------
+	FILE INFO
+	Last updated:     2012/01/19
+	Last updated by:  Matt Wilcox
+
+	----------------------------------------------------------------------------------------------------------------------- */
 
 $(document).ready(function(){
 
-  /* timer function to throttle the window resize event */
-  var waitForFinalEvent = (function () {
-    var timers = {};
-    return function (callback, ms, uniqueId) {
-      if (!uniqueId) {
-        uniqueId = "Don't call this twice without a uniqueId";
-      }
-      if (timers[uniqueId]) {
-        clearTimeout (timers[uniqueId]);
-      }
-      timers[uniqueId] = setTimeout(callback, ms);
-    };
-  })();
+/*
+	=global settings ---------------------------------------------------------------------------------------------------------
+	NOTE: Values used throughout the file
+	----------------------------------------------------------------------------------------------------------------------- */
 
-  /* fix baseline grid for images of unknown height */
-  function fixBaseline(){
-    $("img").each(function(run) {
-      if($(this).parent("a").length > 0){ /* in anchor, has margin been applied to the anchor? */
-        var parent_margin = parseFloat($(this).parent("a").css("margin-bottom").replace("px",""));
-      }
-      if($(this).parent("div.image_main").length > 0){ /* in image_main div, has margin been applied to it? */
-        var parent_margin = parseFloat($(this).parent("div.image_main").css("margin-bottom").replace("px",""));
-      }
-      else{
-        var anchor_margin = 0;
-      }
-      var baseline          = parseFloat($("html").css("line-height").replace("px",""));
-      var img_height        = parseFloat($(this).height());
-      var img_margin_top    = parseFloat($(this).css("margin-top").replace("px",""));
-      var img_margin_bottom = parseFloat($(this).css("margin-bottom").replace("px",""));
-      var img_border_top    = parseFloat($(this).css("border-top-width").replace("px",""));
-      var img_border_bottom = parseFloat($(this).css("border-bottom-width").replace("px",""));
-      var img_footprint     = parseFloat(img_margin_top+img_border_top+img_height+img_border_bottom+img_margin_bottom+parent_margin);
-      var remainder         = parseFloat(img_footprint%baseline);
-      var offset            = parseFloat(baseline-remainder);
+	var animation_speed = 500;
+	var type_baseline   = parseFloat($("html").css("line-height").replace("px",""));
 
-      if($(this).parent("a").length > 0){ /* in anchor, apply margin to anchor not image */
-        $(this).parent("a").css("margin-bottom",offset+"px");
-      }
-      else if($(this).parent("div.image_main").length > 0){ /* in anchor, apply margin to anchor not image */
-        $(this).parent("div.image_main").css("margin-bottom",offset+"px");
-      }
-      else{ /* not in an anchor, apply margin to image */
-        $(this).css("margin-bottom",offset+"px");
-      }
-    });
-  }
+/*
+	=helper functions --------------------------------------------------------------------------------------------------------
+	NOTE: Functions used throughout the file
+	----------------------------------------------------------------------------------------------------------------------- */
 
-  /* run the fixBaseline function after window resizes end
-  $(window).resize(function(){
-    waitForFinalEvent(function(){
-      fixBaseline();
-    }, 1000, "windowresize");
-  }); */
+	function targetHighlight(target) {
 
-  $(window).bind('load', function() { // events to run after the entire page has finished loading
-    $("body").addClass("load-complete");
+		// don't apply the highlight to this list of targets
+		if(target == '#content_main' ||
+		   target == '#content') { return }
+		
+		// IE 8 and under can't animate opacity worth a damn
+		if($.browser.msie && $.browser.version < 9) { return }
 
-    /* run fixBaseline on page load too */
-    fixBaseline();
-  });
-});
+		// where is the target?
+		var target_offset = $(target).offset();
+		
+		// add the image into the DOM
+		$('body').append("<img src=\"/assets/images/attention.png\" alt=\"\" id=\"attention\" />");
+
+		// put the image in the right place
+		$('#attention').css("position","absolute")
+		               .css("top",target_offset.top)
+		               .css("left",target_offset.left)
+		               .css("opacity","0")
+		               .css("z-index","1000")
+		               .delay(animation_speed);
+
+		// animate it, then destroy it
+		$('#attention').animate({opacity: 1}, animation_speed*2)
+		               .animate({opacity: 0}, animation_speed*4, function() {
+			               $('#attention').remove();
+			              });
+	} // function targetHighlight(target)
+
+/*
+	=behaviours --------------------------------------------------------------------------------------------------------------
+	NOTE: Implement certain functionality based on the page being viewed or a user interaction
+	----------------------------------------------------------------------------------------------------------------------- */
+
+/*
+	=scroll internal anchors */
+	$("a[href^=#]").click(function(){
+		var target = $(this).attr('href');
+		$("html").animate({
+			scrollTop: $(target).offset().top-type_baseline
+		}, animation_speed, "swing", targetHighlight(target));
+		return false;
+	});
+
+/*
+	=events to run after the entire page has finished loading */
+	$(window).bind('load', function() {
+		$("body").addClass("load-complete");
+	});
+	
+}); // $(document).ready
