@@ -13,14 +13,14 @@
 
 	--------------------------------------------------------------------------------------------------------------------------
 	STYLEGUIDE
-  Indentation uses tabs [why: http://lea.verou.me/2012/01/why-tabs-are-clearly-superior/]
+	Indentation uses tabs [why: http://lea.verou.me/2012/01/why-tabs-are-clearly-superior/]
 
-  This file is divided into the following sections:
+	This file is divided into the following sections:
 
-    =global_setting    |  Values used throughout the file 
-    =helper_functions  |  Functions used throughout the file
-    =behaviours        |  Implement certain functionality based on the page being viewed or a user interaction
-  ----------------------------------------------------------------------------------------------------------------------- */
+	  =global_setting    |  Values used throughout the file 
+	  =helper_functions  |  Functions used throughout the file
+	  =behaviours        |  Implement certain functionality based on the page being viewed or a user interaction
+	----------------------------------------------------------------------------------------------------------------------- */
 
 $(document).ready(function(){
 

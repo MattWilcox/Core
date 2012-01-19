@@ -12,15 +12,15 @@
 	
 	--------------------------------------------------------------------------------------------------------------------------
 	STYLEGUIDE
-  Indentation uses tabs [why: http://lea.verou.me/2012/01/why-tabs-are-clearly-superior/]
+	Indentation uses tabs [why: http://lea.verou.me/2012/01/why-tabs-are-clearly-superior/]
 
-  This file is divided into the following sections:
+	This file is divided into the following sections:
 
-    =jQuery     |  The standard jQuery library 
-    =on_demand  |  A jQuery plugin to allow dynamic asset loading
-    =modernizr  |  Use Modernizr feature detection to load polyfills as required
-    =loading    |  un on_demand to dynamically load assets required by the page
-  ----------------------------------------------------------------------------------------------------------------------- */
+	  =jQuery     |  The standard jQuery library 
+	  =on_demand  |  A jQuery plugin to allow dynamic asset loading
+	  =modernizr  |  Use Modernizr feature detection to load polyfills as required
+	  =loading    |  un on_demand to dynamically load assets required by the page
+	----------------------------------------------------------------------------------------------------------------------- */
 
 /*
 	=jQuery ------------------------------------------------------------------------------------------------------------------
@@ -42,8 +42,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
 	NOTE: Use Modernizr feature detection to load polyfills as required (Modernizr library loaded in HTML head)
 	----------------------------------------------------------------------------------------------------------------------- */
 Modernizr.load({
-  test : Modernizr.mq('(min-width: 0px)'),
-  nope : '/assets/javascript/polyfills/respond.min.js'
+	test : Modernizr.mq('(min-width: 0px)'),
+	nope : '/assets/javascript/polyfills/respond.min.js'
 });
 
 /*
