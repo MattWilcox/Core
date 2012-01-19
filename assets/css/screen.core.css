@@ -5,7 +5,7 @@
 	
 	--------------------------------------------------------------------------------------------------------------------------
 	FILE INFO
-	Last updated:     2012/01/18
+	Last updated:     2012/01/19
 	Last updated by:  Matt Wilcox
 
 	--------------------------------------------------------------------------------------------------------------------------
@@ -190,23 +190,54 @@
 	sub {
 		vertical-align : bottom; font-size : .75em; }
 	 
-/* =a */
-	a:link    { color : #9b9; text-decoration : none; }
-	a:visited { color : #9b9; text-decoration : none; }
+/*
+	=a */
+	a {
+		-webkit-transition: box-shadow linear 0.2s, background-color linear 0.2s;
+		-moz-transition: box-shadow linear 0.2s, background-color linear 0.2s;
+		-o-transition: box-shadow linear 0.2s, background-color linear 0.2s;
+		-ms-transition: box-shadow linear 0.2s, background-color linear 0.2s;
+		transition: box-shadow linear 0.2s, background-color linear 0.2s; }
+	a:link    { color : #66b; text-decoration : none; }
+	a:visited { color : #66b; text-decoration : none; }
 	a:hover   { text-decoration : underline; }
-	a:focus   { background-color : #ff9; color : #333; }
-	a:active  { background-color : #ff6; color : #333; }
+	a:focus   { box-shadow: 0 0 6px rgba(255,255,255,1); background-color: #fff; outline: 0; }
+	a:active  {  }
 	/* :target   { background-color : #ff6; } */
 	 
 /*
-	=img */
+  =img */
 	img {
 		max-width : 100%; }
 	#target_hilight {
 		position : absolute; }
 	a img {
 		margin : 0; }
-		 
+
+/*
+	=table */
+	tbody tr:nth-child(2n+1) {
+		background-color: rgba(0,0,0,.1); }
+
+/*
+	=forms */
+	input[type="text"],
+	input[type="email"],
+	input[type="search"],
+	textarea {
+		border: 0.0625em solid #999; /* 1px */
+		-webkit-transition: border linear 0.2s, box-shadow linear 0.2s; }
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	input[type="search"]:focus,
+	textarea:focus {
+		border-color: #bbb;
+		box-shadow: 0 0 10px rgba(255,255,255,1);
+		outline: 0; }
+	
+	label.focus span {
+		color : #000; }
+
 /* =div */
 	
 /* =span */
@@ -216,9 +247,9 @@
 		display : inline; }
 
 /*
-	=modules --------------------------------------------------------------------------------------------------------------
-	NOTE: Modules are discrete sections of data that may be used on any page, e.g., "Latest News"
-	----------------------------------------------------------------------------------------------------------------------- */     
+  =modules --------------------------------------------------------------------------------------------------------------
+  NOTE: Modules are discrete sections of data that may be used on any page, e.g., "Latest News"
+  ----------------------------------------------------------------------------------------------------------------------- */     
 
 /* while we're building, let's see a baseline */
 	html {
@@ -237,6 +268,6 @@
 /* generic components */
 		 
 /*
-	=layout ---------------------------------------------------------------------------------------------------------------
-	NOTE:       How modules are laid out on specific pages
-	----------------------------------------------------------------------------------------------------------------------- */
+  =layout ---------------------------------------------------------------------------------------------------------------
+  NOTE:       How modules are laid out on specific pages
+  ----------------------------------------------------------------------------------------------------------------------- */
