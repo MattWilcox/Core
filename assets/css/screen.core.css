@@ -87,7 +87,8 @@
 
 	a:link { -webkit-tap-highlight-color : #999; }
 	
-	/* don't collapse these, when a browser doesn't recognise a selector it discards the whole rule - nothing would be applied */
+	/* Don't collapse these into one ruleset. When a browser doesn't recognise a selector it discards the whole ruleset.
+	   By using vendor selectors in one ruleset you guarentee nothing will be applied */
 	::-webkit-selection { background-color: #999; color: #fff; }
 	::-moz-selection    { background-color: #999; color: #fff; }
 	::selection         { background-color: #999; color: #fff; }
@@ -167,9 +168,6 @@
 		width : 90%; margin : 0 auto; }
 
 /*
-	=p */
-
-/*
 	=q */
 	q {
 		quotes: '“' '”' '‘' '’'; } /* open then close, then new nesting level */
@@ -182,6 +180,7 @@
 	=sup */
 	sup {
 		vertical-align : top; font-size : .75em; }
+
 /*
 	=sub */
 	sub {
@@ -190,11 +189,11 @@
 /*
 	=a */
 	a {
-		-webkit-transition: box-shadow linear 0.2s, background-color linear 0.2s;
-		-moz-transition: box-shadow linear 0.2s, background-color linear 0.2s;
-		-o-transition: box-shadow linear 0.2s, background-color linear 0.2s;
-		-ms-transition: box-shadow linear 0.2s, background-color linear 0.2s;
-		transition: box-shadow linear 0.2s, background-color linear 0.2s; }
+		-webkit-transition : box-shadow linear 0.2s, background-color linear 0.2s;
+		-moz-transition    : box-shadow linear 0.2s, background-color linear 0.2s;
+		-o-transition      : box-shadow linear 0.2s, background-color linear 0.2s;
+		-ms-transition     : box-shadow linear 0.2s, background-color linear 0.2s;
+		transition         : box-shadow linear 0.2s, background-color linear 0.2s; }
 	a:link    { color : #66b; text-decoration : none; }
 	a:visited { color : #66b; text-decoration : none; }
 	a:hover   { text-decoration : underline; }
