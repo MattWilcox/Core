@@ -85,31 +85,28 @@
 	   http://orderedlist.com/our-writing/blog/articles/webkit-font-smoothing/
 	body { -webkit-font-smoothing: antialiased; } */
 
-	a:link { 
-		-webkit-tap-highlight-color : #999; }
-	::-webkit-selection,
-	::-moz-selection,
-	::selection { 
-		background: #999; color: #fff; text-shadow: none; }
+	a:link { -webkit-tap-highlight-color : #999; }
+	
+	/* don't collapse these, when a browser doesn't recognise a selector it discards the whole rule - nothing would be applied */
+	::-webkit-selection { background-color: #999; color: #fff; }
+	::-moz-selection    { background-color: #999; color: #fff; }
+	::selection         { background-color: #999; color: #fff; }
+
+	::-webkit-input-placeholder { font-size: .875em; line-height: 1.4; }
+	input:-moz-placeholder      { font-size: .875em; line-height: 1.4; }
 	 
 	/* kill input=search default styling on webkit
-	input[type=search] {
-		-webkit-appearance : none; }
+	input[type=search] { -webkit-appearance : none; }
 	input[type="search"]::-webkit-search-decoration, 
 	input[type="search"]::-webkit-search-cancel-button {
 		display: none; } */
-
-	::-webkit-input-placeholder,
-	input:-moz-placeholder {
-		padding: 10px;
-		font-size: .875em; line-height: 1.4; }
-
+	
 	input, textarea {
 		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		-o-box-sizing: border-box;
-		-ms-box-sizing: border-box;
-		box-sizing: border-box; }
+		-moz-box-sizing   : border-box;
+		-o-box-sizing     : border-box;
+		-ms-box-sizing    : border-box;
+		box-sizing        : border-box; }
 		 
 /*
 	=typography -----------------------------------------------------------------------------------------------------------
