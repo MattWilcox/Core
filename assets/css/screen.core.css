@@ -150,7 +150,7 @@
 	h3, h4, h5, h6 {
 		/* em fallback */ font-size: 1.375em;
 		font-size: 1.375rem; line-height : 1; }
-	p, ul { 
+	p, ul, blockquote { 
 		/* em fallback */ margin-bottom: 1.375em;
 		margin-bottom: 1.375rem; }
 	 
@@ -169,12 +169,24 @@
 
 /*
 	=q */
-	q {
+	q,
+	blockquote > p:first-child,
+	blockquote > p:last-child {
 		quotes: '“' '”' '‘' '’'; } /* open then close, then new nesting level */
-	q:before {
+	q:before,
+	blockquote > p:first-child:before {
 		content: open-quote; }
-	q:after {
+	q:after,
+	blockquote > p:last-of-type:after {
 		content: close-quote; }
+
+/*
+	=blockquote */
+	blockquote {
+		padding : 1.375em 1em; border-left: .5em solid #999;
+		background: #fff; }
+	blockquote footer {
+		display: block; margin-top: 1.375em; padding-top: 1.3125em; border-top: 0.0625em dotted #999; }
 
 /*
 	=sup */
@@ -185,6 +197,11 @@
 	=sub */
 	sub {
 		vertical-align : bottom; font-size : .75em; }
+
+/*
+	=code */
+	code {
+		font: .85em/1 Courier, monospace; color: #006; }
 	 
 /*
 	=a */
@@ -271,3 +288,12 @@
   =layout ---------------------------------------------------------------------------------------------------------------
   NOTE:       How modules are laid out on specific pages
   ----------------------------------------------------------------------------------------------------------------------- */
+
+  /* TEMPORARY CRAP HERE */
+  html.styleguide ul,
+  html.styleguide ol,
+  html.styleguide dl { margin-left: 2em; }
+  html.styleguide .html5_section { overflow: hidden; clear: both; margin-bottom: 1.375em; padding-bottom: 1.3125em; border-bottom: 0.0625em solid #999; }
+  html.styleguide .topic { float: left; width: 30%; }
+  html.styleguide .example { float: left; width: 60%; margin-left: 10%; }
+ 	html.styleguide .topic h2 { color: #000; margin-top :0; }

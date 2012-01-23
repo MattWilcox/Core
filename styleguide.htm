@@ -24,10 +24,11 @@
 	<link rel="stylesheet" media="screen" href="/assets/css/screen.core.css" />
 	<link rel="stylesheet" media="print"  href="/assets/css/print.css" />
 
-	<!-- Styling for progressively larger displays
-	     NOTE:      breakpoints are decided based on the design, not device
-	     REFERENCE: http://mattwilcox.net/archive/entry/id/1075/ -->
+	<!-- Styling for progressively larger displays -->
 	<link rel="stylesheet" media="only screen and (min-width: 480px)"  href="/assets/css/screen.480.css" />
+	<link rel="stylesheet" media="only screen and (min-width: 768px)"  href="/assets/css/screen.768.css" />
+	<link rel="stylesheet" media="only screen and (min-width: 992px)"  href="/assets/css/screen.992.css" />
+	<link rel="stylesheet" media="only screen and (min-width: 1382px)" href="/assets/css/screen.1382.css" />
 
 	<!-- Favicon for Retina iThings -->
 	<link rel="apple-touch-icon-precomposed"
@@ -73,16 +74,15 @@
 
 <body>
 	<!--
-		Skip Links [WCAG 2: http://www.w3.org/TR/WCAG20-TECHS/G1.html]
+	  Skip Links [WCAG 2: http://www.w3.org/TR/WCAG20-TECHS/G1.html]
 
-		Not to be used in most cases, use discretion.
-		NEVER use access keys or tab index [http://wcagsamurai.org/errata/errata.html#GL9]
+	  Not to be used in most cases, use discretion.
+	  NEVER use access keys or tab index [http://wcagsamurai.org/errata/errata.html#GL9]
 
 	<p class="accessibility">Jump to
 		<a href="#content_main">main content</a>,
 		<a href="#nav_main">main navigation</a>    
-	</p>
-	-->
+	</p>-->
 
 	<!--[if IE 6]>
 		<div class="ie6-warning">
@@ -107,24 +107,22 @@
 			<p>If ever you add or change something on the site, make sure it is reflected here.</p>
 		</div>
 
-		<div id="general-settings">
-			<div class="topic">
-				<h2>General settings</h2>
-				<div class="developers">
-					<h3>Developers</h3>
-					<ul>
-						<li>Tabs are set to 2 spaces. Indent properly. Everywhere. Always.</li>
-						<li>We’re using the HTML5 DOCTYPE but no HTML5 sectioning elements. We don’t want to rely on JS to fix old browser’s display problems.</li>
-						<li>We’re aiming for WCAG 2 compliance wherever realistic. Check the <a href="http://www.w3.org/TR/WCAG20-TECHS/">WCAG 2 Techniques</a> before deciding whether or not the guideline is relevent or remains best-practice.</li>
-						<li>Obey the CSS styleguide, make life easier for everyone. Formatting notes are in the <code>screen.core.css</code> file.</li>
-					</ul>
-				</div>
-				<div class="designers">
-					<h3>Designers</h3>
-					<ul>
-						<li>Base font size is 16px, leading is 22px. The font is Helvetica Neue. Heading styles are found below.</li>
-					</ul>
-				</div>
+		<div id="general-settings" class="html5_section">
+			<h2>General settings</h2>
+			<div class="developers">
+				<h3>Developers</h3>
+				<ul>
+					<li>Indentation uses single tabs, not spaces. Indent properly. Everywhere. Always. <a href="http://lea.verou.me/2012/01/why-tabs-are-clearly-superior/">See why</a>.</li>
+					<li>We’re using the HTML5 DOCTYPE but no HTML5 sectioning elements. We don’t want to rely on JS to fix old browser’s display problems.</li>
+					<li>We’re aiming for WCAG 2 compliance wherever realistic. Check the <a href="http://www.w3.org/TR/WCAG20-TECHS/">WCAG 2 Techniques</a> before deciding whether or not the guideline is relevent or remains best-practice.</li>
+					<li>Obey the CSS styleguide, make life easier for everyone. Formatting notes are in the <code>screen.core.css</code> file.</li>
+				</ul>
+			</div>
+			<div class="designers">
+				<h3>Designers</h3>
+				<ul>
+					<li>Base font size is 16px, leading is 22px. The font is Helvetica Neue. Heading styles are found below.</li>
+				</ul>
 			</div>
 		</div>
 
@@ -132,8 +130,7 @@
 			<div class="topic">
 				<h2>Headings</h2>
 				<p><strong>Headings must be in the correct order and must not skip levels <sup><a href="http://www.w3.org/TR/WCAG20-TECHS/G141">WCAG 2</a> 1.3.1, 2.4.10</sup></strong></p>
-				<p>For all pages except the homepage the <em>page title</em> is a heading level one (on this page “Styleguide”).
-					 <br />For the homepage the <em>site title</em> (contained in <code>#site_context</code> and usually replaced with a logo) is the heading level one.</p>
+				<p>For all pages except the homepage the <em>page title</em> is a heading level one (on this page “Styleguide”). For the homepage the <em>site title</em> (contained in <code>#site_context</code> and usually replaced with a logo) is the heading level one.</p>
 				<p>Headings are set in <a href="http://www.fontsquirrel.com/fonts/arvo">Arvo Regular</a>, all-caps.</p>
 			</div><!-- topic -->
 
@@ -145,30 +142,89 @@
 				<h5>Heading level 5</h5><p>font-size: 20px; line-height: 44px; margin-bottom : 22px;</p>
 				<h6>Heading level 6</h6><p>font-size: 20px; line-height: 44px; margin-bottom : 22px;</p>
 			</div><!-- .example -->
-		</div><!-- -->
+		</div><!-- #headings.html5_section -->
 
+		<div id="inline" class="html5_section">
+			<div class="topic">
+				<h2>Inline elements</h2>
+				<p>Inline elements are things like paragraphs, you'd do well to inspect the source of the folowing examples:</p>
+			</div><!-- .topic -->
+			<div class="example">
+				<p>This page is designed as a markup guide for my own use. It is not intended to provide a <q lang="en-US">one markup
+					 fits all situations</q> reference, but rather as a guide containing as many
+					 <abbr title="Hyper Text Markup Language">HTML</abbr> element references as possible, used in such a way as
+					 to promote the semantic implementation of elements, attributes and tags. Here is a <a href="http://google.com" rel="friend external thomas">link to an external URL</a>.</p>
+				<p>Dan Cederholm once gave a succinct definition of the <code>&lt;cite&gt;</code> attribute in his book <cite>Web
+					 Standard Solutions</cite>. It's a <em>very</em> good book, and one that I <strong>still</strong> refer to today
+					 <sup id="reference_1"><a href="#footnote_1">[1]</a></sup>. <del cite="http://www.w3.org/TR/2002/WD-xhtml2-20020805/mod-edit.html#sec_13.1."
+								title="text changed as a matter of oppinion after the fact">Many</del>
+					 <ins datetime="2006-17-03T21:15:30-00:00">A number</ins> of the HTML elements used in this page are semantic, but rare. Some, such as
+					 <code>&lt;dfn&gt;</code> are useful mainly in niche fields, for example, in legal documentation one might define a
+					 term.</p>
+				<p>Inline quotes don't need quotation marks because the user agent adds them itself, as in this example: <q>That's what she said <q>yeah but is it?</q></q></p>
+				<p>Images by default are inline <img src="/assets/images/smile.png" alt="icon: smile" /> the bottom of the image aligns with the baseline of the text within which it sits.</p>
+			</div><!-- .example -->
+		</div><!-- #inline.html5_section -->
+
+		<div id="lists" class="html5_section">
+			<div class="topic">
+				<h2>Lists</h2>
+				<p>Lists are simple enough, they look like this:</p>
+			</div><!-- .topic -->
+			<div class="example">
+			<h3>An example of ordered lists</h3>
+				<ol>
+					<li>first
+							<ol>
+								 <li>first</li>
+								 <li>second</li>
+								 <li>third</li>
+							</ol></li>
+					<li>second</li>
+					<li>third</li>
+				</ol>
+				
+				<h3>An example of an unordered list</h3>
+				<ul>
+					<li>second</li>
+					<li>first</li>
+					<li>third</li>
+				</ul>
+				
+				<h3>An example of a definition list</h3>
+				<dl>
+					<dt>definition term one</dt>
+					<dd>definition data one</dd>
+					<dt>definition term two</dt>
+					<dd>definition data two</dd>
+				</dl>
+			</div><!-- .example -->
+		</div><!-- #lists.html5_section -->
+
+		<div id="blockquote" class="html5_section">
+			<div class="topic">
+				<h2>Blockquote</h2>
+				<p>Blockquotes are used whenever the quote is not inline, or requires attributing.</p>
+			</div><!-- .topic -->
+			<div class="example">
+				<blockquote cite="/styleguide.htm">
+					<p>This is quoted text, it doesn't have speech marks in the text itself, those are added by the CSS.</p>
+					<p>Blockquotes can contain any markup as they are block-level elements, including multiple paragraphs.</p>
+					<p>The mark-up convention is derived from <a href="http://html5doctor.com/blockquote-q-cite/">http://html5doctor.com/blockquote-q-cite/</a> and <a href="http://adactio.com/journal/4675/">http://adactio.com/journal/4675/</a>.</p>
+					<footer>
+						<cite class="vcard"><a class="fn url" href="http://mattwilcox.net">Matt Wilcox</a></cite>,
+						from the article <a href="/styleguide.htm">Styleguide</a>
+					</footer>
+				</blockquote>
+
+				<p>Blockquote's are good, but the cite attribute isn't human-accessible, which is why you always want to put a hyperlink in there if the quoted source is available online. It's also worth noting that the cite is in a footer element in HTML5 because a footer gives information about the enclosing tag.</p>
+			</div><!-- .example -->
+		</div><!-- #blockquote.html5_section -->
+		
 <!-- I GOT TO HERE WITH REFACTORING, THE REST OF THE PAGE IS STILL TO DO -->
 
 			<a href="/content/images/test.jpg"><img src="/content/images/thumbnails/test.jpg" alt="test photograph" /></a>
 			
-			<p>This page is designed as a markup guide for my own use. It is not intended to provide a <q lang="en-US">one markup
-				 fits all situations</q> reference, but rather as a guide containing as many
-				 <abbr title="eXtensible Hypertext Markup Language">XHTML</abbr> element references as possible, used in such a way as
-				 to promote the semantic implementation of elements, attributes and tags. Here is a <a href="http://google.com" rel="friend external thomas">link to an external URL</a>.</p>
-			<p>Dan Cederholm once gave a succinct definition of the <code>&lt;cite&gt;</code> attribute in his book <cite>Web
-				 Standard Solutions</cite>. It's a <em>very</em> good book, and one that I <strong>still</strong> refer to today.
-				 <sup id="reference_1"><a href="#footnote_1">[1]</a></sup>. <del cite="http://www.w3.org/TR/2002/WD-xhtml2-20020805/mod-edit.html#sec_13.1."
-							title="text changed as a matter of oppinion after the fact">Many</del>
-				 <ins datetime="2006-17-03T21:15:30-00:00">A number</ins> of the XHTML elements used in this page are semantic, but rare. Some, such as
-				 <code>&lt;dfn&gt;</code> are useful mainly in niche fields, for example, in legal documentation one might define a
-				 term as follows:</p>
-			<blockquote cite="#url_goes_here">
-				<p><dfn>Our service</dfn> means the dry cleaning service provided to you by us and excludes our delivery
-					service and the supply of any required H<sub>2</sub>O.</p>
-				<footer>Bob's Dry Cleaners, <a href="#url_goes_here">Cite URL goes here too</a></footer>
-			</blockquote>
-			<p>Blockquote's are good, but the cite attribute isn't human-accessible, which is why you always want to put a hyperlink in there if the quoted source is available online. It's also worth noting that the cite is in a footer element in HTML5 because a footer gives information about the enclosing tag.</p>
-			<p>Inline quotes don't need quotation marks because the user agent adds them itself: <q>That's what she said <q>yeah but is it?</q></q></p>
 			<p>Sometimes we like to include images, like the following one:
 				<img alt="A graph"
 						 title="A graph"
@@ -272,32 +328,7 @@
 				</tbody>
 			</table>
 			
-			<h3>An example of ordered lists</h3>
-			<ol>
-				<li>first
-						<ol>
-							 <li>first</li>
-							 <li>second</li>
-							 <li>third</li>
-						</ol></li>
-				<li>second</li>
-				<li>third</li>
-			</ol>
 			
-			<h3>An example of an unordered list</h3>
-			<ul>
-				<li>second</li>
-				<li>first</li>
-				<li>third</li>
-			</ul>
-			
-			<h3>An example of a definition list</h3>
-			<dl>
-				<dt>definition term one</dt>
-				<dd>definition data one</dd>
-				<dt>definition term two</dt>
-				<dd>definition data two</dd>
-			</dl>
 		</div><!-- #content_main.html5_section -->
 		
 		<div id="content_supp" class="clear">
@@ -344,12 +375,11 @@
 
 	<!-- javascript
 			 NOTE:      Javascript goes at the bottom of the page to enhance the perception of speed with page load.
-			            Most browsers are limited to two simultaneous http requests, so if we loaded the JS before the HTML
-			            the page would appear to load slowly (as it loads non-visible data before the visible data).
+									Most browsers are limited to two simultaneous http requests, so if we loaded the JS before the HTML
+									the page would appear to load slowly (as it loads non-visible data before the visible data).
 			 REFERENCE: http://developer.yahoo.com/performance/rules.html#js_bottom
 			 NOTE:      I usually use lazy-loading so that a JS file scans the DOM, knows what JS files are needed and loads only
-			            those. JS manages itself, the HTML doesn't need to change, no unused resources are ever loaded. -->
-
+									those. JS manages itself, the HTML doesn't need to change, no unused resources are ever loaded. -->
 	<script src="/assets/javascript/initiate.js"></script>
 </body>
 </html>

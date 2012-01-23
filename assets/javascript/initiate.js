@@ -55,7 +55,7 @@ Modernizr.load({
 	----------------------------------------------------------------------------------------------------------------------- */
 
 $(document).ready(function(){
-  // TEST: if we want a colourbox images on our site
+  // TEST: if we want a colorbox pop-up on the page
   // if($("a.colorbox").length > 0) {
   //  $.requireJs('/assets/javascript/colorbox/colorbox/jquery.colorbox-min.js');
   //    $.requireCss('/assets/javascript/colorbox/example1/colorbox.css');
