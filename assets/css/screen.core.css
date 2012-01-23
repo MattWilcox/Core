@@ -204,9 +204,9 @@
 		vertical-align : bottom; font-size : .75em; }
 
 /*
-	=code */
-	code {
-		font: .85em/1 Courier, monospace; color: #006; }
+  =code */
+  code {
+    font-family : Courier, monospace; font-size : .85em; color : #393; }
 	 
 /*
 	=a */
@@ -259,11 +259,6 @@
 	
 	label.focus span {
 		color : #000; }
-
-/*
-  =code */
-  code {
-    font-family : Courier; font-size : .85em; color : #393; }
 
 /* =div */
 	
