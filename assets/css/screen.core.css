@@ -140,6 +140,11 @@
 		/* em fallback */ margin-top: 1.375em; margin-bottom : 1.375em;
 		margin-top: 1.375rem; margin-bottom : 1.375rem;
 		font-family: ArvoRegular, "Helvetica Neue", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: normal;
+		-moz-font-feature-settings    : "liga=1, dlig=1";
+		-ms-font-feature-settings     : "liga", "dlig";
+		-webkit-font-feature-settings : "liga", "dlig";
+		-o-font-feature-settings      : "liga", "dlig";
+		font-feature-settings         : "liga", "dlig"; }
 	
 	h1 {
 		/* em fallback */ font-size: 2em;
@@ -199,9 +204,9 @@
 		vertical-align : bottom; font-size : .75em; }
 
 /*
-  =code */
-  code {
-    font-family : Courier, monospace; font-size : .85em; color : #393; }
+	=code */
+	code {
+		font: .85em/1 Courier, monospace; color: #006; }
 	 
 /*
 	=a */
@@ -300,9 +305,14 @@
 	.popup {
 		margin-bottom : 1.375em;
 		margin-bottom : 1.375rem; }
-	.popup a,
+	.popup > a,
 	.popup img {
 		display : block; }
+
+	.popup.captioned {
+		padding: .5em; background-color: rgba(255,255,255,.8); }
+	.popup .caption {
+		font-size: .85em; margin: .5em 0 0;	}
 		 
 /*
   =layout ---------------------------------------------------------------------------------------------------------------
@@ -317,3 +327,4 @@
   html.styleguide .topic { float: left; width: 30%; }
   html.styleguide .example { float: left; width: 60%; margin-left: 10%; }
  	html.styleguide .topic h2 { color: #000; margin-top :0; }
+ 	html.styleguide #popups .example h3 { color : #000; }
