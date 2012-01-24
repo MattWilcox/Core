@@ -72,49 +72,55 @@ $(document).ready(function(){
   function fixBaseline(){
   	
     $("img").each(function(run) {
-    	var total_footprint=null;
 
-      if($(this).parents(".popup").length > 0){ /* the image is inside a popup box */
-        var popup_margin_bottom  = parseFloat($(this).parents(".popup").css("margin-bottom").replace("px",""));
-        var popup_padding_bottom = parseFloat($(this).parents(".popup").css("padding-bottom").replace("px",""));
-        var popup_border_bottom  = parseFloat($(this).parents(".popup").css("border-bottom-width").replace("px",""));
-        var popup_padding_top    = parseFloat($(this).parents(".popup").css("padding-top").replace("px",""));
-        var popup_border_top     = parseFloat($(this).parents(".popup").css("border-top-width").replace("px",""));
+    	/* abort now if it's not an image set as display block */
+    	if($(this).css('display') == 'inline') { return; }
+
+    	/* setup variables */
+    	var this_img        = $(this);
+    	var baseline        = parseFloat($("html").css("line-height").replace("px",""));
+      var fontsize        = parseFloat($("html").css("font-size").replace("px",""));
+      var total_footprint = null;
+
+      /* IF: the image is inside a popup box */
+      if($(this).parents(".popup").length > 0){
+      	var popup = $(this).parents(".popup");
+
+        var popup_margin_bottom  = parseFloat(popup.css("margin-bottom").replace("px",""));
+        var popup_padding_bottom = parseFloat(popup.css("padding-bottom").replace("px",""));
+        var popup_border_bottom  = parseFloat(popup.css("border-bottom-width").replace("px",""));
+        var popup_padding_top    = parseFloat(popup.css("padding-top").replace("px",""));
+        var popup_border_top     = parseFloat(popup.css("border-top-width").replace("px",""));
         var popup_footprint      = parseFloat(popup_margin_bottom+popup_padding_bottom+popup_border_bottom+popup_padding_top+popup_border_top);
 
 				total_footprint          = popup_footprint;
 				
+				/* does it have a caption too? */
 				if($(this).parents("a").next("p").html() != null) {
-        	var caption_height         = parseFloat($(this).parents("a").next("p").css("height").replace("px",""));
-        	var caption_margin_top     = parseFloat($(this).parents("a").next("p").css("margin-top").replace("px",""));
-        	var caption_margin_bottom  = parseFloat($(this).parents("a").next("p").css("margin-bottom").replace("px",""));
-        	var caption_padding_top    = parseFloat($(this).parents("a").next("p").css("padding-top").replace("px",""));
-        	var caption_padding_bottom = parseFloat($(this).parents("a").next("p").css("padding-bottom").replace("px",""));
+					var caption = $(this).parents("a").next("p");
+
+        	var caption_height         = parseFloat(caption.css("height").replace("px",""));
+        	var caption_margin_top     = parseFloat(caption.css("margin-top").replace("px",""));
+        	var caption_margin_bottom  = parseFloat(caption.css("margin-bottom").replace("px",""));
+        	var caption_padding_top    = parseFloat(caption.css("padding-top").replace("px",""));
+        	var caption_padding_bottom = parseFloat(caption.css("padding-bottom").replace("px",""));
 
         	var caption_footprint      = parseFloat(caption_height+caption_margin_top+caption_margin_bottom+caption_padding_top+caption_padding_bottom);
 
         	total_footprint = total_footprint + caption_footprint;
         }
-	    } else 
-	    if($(this).parent("a").length > 0){ /* the image is inside an anchor but not a popup box */
+	    } 
+	    /* ELSE IF: the image is inside an anchor but not a popup box */
+	    else if($(this).parent("a").length > 0){
         var parent_margin = parseFloat($(this).parent("a").css("margin-bottom").replace("px",""));
-        total_footprint = total_footprint + parent_margin;
-      } else {
-      	if($(this).css('display','inline')) { return; }
+        total_footprint   = total_footprint + parent_margin;
       }
 
-      var baseline           = parseFloat($("html").css("line-height").replace("px",""));
-      var fontsize           = parseFloat($("html").css("font-size").replace("px",""));
-
-      var img_height         = parseFloat($(this).height());
-
-      // shrink the image height to a whole pixel to avoid rounding errors in the layout engine
-      var downscale = Math.floor(img_height);
-
-      var img_margin_top     = parseFloat($(this).css("margin-top").replace("px",""));
-      var img_margin_bottom  = parseFloat($(this).css("margin-bottom").replace("px",""));
-      var img_border_top     = parseFloat($(this).css("border-top-width").replace("px",""));
-      var img_border_bottom  = parseFloat($(this).css("border-bottom-width").replace("px",""));
+      var img_height         = parseFloat(this_img.height());
+      var img_margin_top     = parseFloat(this_img.css("margin-top").replace("px",""));
+      var img_margin_bottom  = parseFloat(this_img.css("margin-bottom").replace("px",""));
+      var img_border_top     = parseFloat(this_img.css("border-top-width").replace("px",""));
+      var img_border_bottom  = parseFloat(this_img.css("border-bottom-width").replace("px",""));
 
       var total_footprint    = total_footprint + parseFloat(img_margin_top+img_border_top+img_height+img_border_bottom+img_margin_bottom);
 
@@ -134,6 +140,8 @@ $(document).ready(function(){
         $(this).css("margin-bottom",offset+"px");
       }
 
+      // shrink the image height to a whole pixel to avoid rounding errors in the layout engine
+      var downscale = Math.floor(img_height);
       $(this).css("height",downscale);
     });
   }
