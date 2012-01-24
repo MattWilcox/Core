@@ -164,13 +164,13 @@ function generateImage($source_file, $cache_file, $resolution) {
   $cache_dir = dirname($cache_file);
 
   // does the directory exist already?
-  if (!is_dir($cache_dir)) { 
-    if (!mkdir($cache_dir, 0777, true)) {
+  if (!is_dir($cache_dir)) {
+    if (!mkdir($cache_dir, 0755, true)) {
       // check again if it really doesn't exist to protect against race conditions
       if (!is_dir($cache_dir)) {
         // uh-oh, failed to make that directory
         ImageDestroy($dst);
-        sendErrorImage("Failed to create directory: $cache_dir");
+        sendErrorImage("ERROR [line 173]: Failed to create directory: $cache_file");
       }
     }
   }
@@ -240,6 +240,10 @@ if (!$resolution) {
   $resolution = $mobile_first ? min($resolutions) : max($resolutions);
 }
 
+/* if the requested URL starts with a slash, remove the slash */
+if(substr($requested_uri, 0,1) == "/") {
+  $requested_uri = substr($requested_uri, 1);
+}
 $cache_file = $document_root."/$cache_path/$resolution/".$requested_uri;
 
 /* Use the resolution value as a path variable and check to see if an image of the same name exists at that path */

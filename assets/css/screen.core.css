@@ -269,25 +269,45 @@
 		display : inline; }
 
 /*
+  =display-classes ---------------------------------------------------------------------------------------------------------
+  NOTE: These are to be avoided if at all possible, it is rare they are acceptable. Do not use them for page layout!
+  ----------------------------------------------------------------------------------------------------------------------- */
+  .dc_left   { float: left; margin-right: 1em; }
+  .dc_right  { float: right; margin-left: 1em; }
+
+  .dc_small  { width: 20%; }
+  .dc_medium { width: 40%; }
+  .dc_large  { width: 60%; }
+
+/*
   =modules --------------------------------------------------------------------------------------------------------------
   NOTE: Modules are discrete sections of data that may be used on any page, e.g., "Latest News"
-  ----------------------------------------------------------------------------------------------------------------------- */     
+  ----------------------------------------------------------------------------------------------------------------------- */    
 
 /* while we're building, let's see a baseline */
 	html {
 		background-image : url(../images/_baseline-22.png); }
 	
-/* website header */
-	#site_context  {
+/*
+	=website header */
+	#site_context  {`
 		margin-bottom : 0; }
 	#site_context .title {
 		margin : 0; }
 		 
-/* website footer */
+/*
+	=website footer */
 	#content {
 		margin-top : 2em; padding-top : 1.5em; border-top : 1px solid #fff; }
 		 
-/* generic components */
+/*
+	=popup */
+	.popup {
+		margin-bottom : 1.375em;
+		margin-bottom : 1.375rem; }
+	.popup a,
+	.popup img {
+		display : block; }
 		 
 /*
   =layout ---------------------------------------------------------------------------------------------------------------

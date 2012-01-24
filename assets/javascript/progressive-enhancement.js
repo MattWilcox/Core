@@ -37,6 +37,7 @@ $(document).ready(function(){
 	NOTE: Functions used throughout the file
 	----------------------------------------------------------------------------------------------------------------------- */
 
+/* Highlight a given element using an animated graphic overlay */
 	function targetHighlight(target) {
 
 		// don't apply the highlight to this list of targets
@@ -66,6 +67,42 @@ $(document).ready(function(){
 			               $('#attention').remove();
 			              });
 	} // function targetHighlight(target)
+
+/* Fix baseline grid for images of unknown height */
+  function fixBaseline(){ console.log("start");
+    $("img").each(function(run) { console.log("loop");
+      if($(this).parents(".popup").length > 0){ /* the image is inside a popup box */ console.log("parent is popup");
+        var parent_margin = parseFloat($(this).parents(".popup").css("margin-bottom").replace("px","")); console.log("popup bottom margin: "+parent_margin);
+	    } else 
+	    if($(this).parent("a").length > 0){ /* the image is inside an anchor but not a popup box */ console.log("an image in an anchor but not a popup");
+        var parent_margin = parseFloat($(this).parent("a").css("margin-bottom").replace("px","")); console.log("anchor bottom margin: "+parent_margin);
+      } else {
+      	if($(this).css('display','inline')) { return; }
+      	var parent_margin = 0;
+      }
+
+      var baseline          = parseFloat($("html").css("line-height").replace("px",""));
+      var img_height        = parseFloat($(this).height());
+      var img_margin_top    = parseFloat($(this).css("margin-top").replace("px",""));
+      var img_margin_bottom = parseFloat($(this).css("margin-bottom").replace("px",""));
+      var img_border_top    = parseFloat($(this).css("border-top-width").replace("px",""));
+      var img_border_bottom = parseFloat($(this).css("border-bottom-width").replace("px",""));
+      var img_footprint     = parseFloat(img_margin_top+img_border_top+img_height+img_border_bottom+img_margin_bottom+parent_margin);
+      var remainder         = parseFloat(img_footprint%baseline);
+      var offset            = parseFloat(baseline-remainder);
+
+      console.log("img_footprint: "+img_footprint);
+
+      if($(this).parents(".popup").length > 0){ /* apply margin to popup box */
+        $(this).parents(".popup").css("margin-bottom",offset+"px");
+      } else
+      if($(this).parent("a").length > 0){ /* apply margin to anchor */
+        $(this).parent("a").css("margin-bottom",offset+"px");
+      } else { /* apply margin to image */
+        $(this).css("margin-bottom",offset+"px");
+      }
+    });
+  }
 
 /*
 	=behaviours --------------------------------------------------------------------------------------------------------------
@@ -102,6 +139,9 @@ $(document).ready(function(){
 	=events to run after the entire page has finished loading */
 	$(window).bind('load', function() {
 		$("body").addClass("load-complete");
+
+		/* run fixBaseline on page load too */
+    fixBaseline();
 	});
 	
 }); // $(document).ready
