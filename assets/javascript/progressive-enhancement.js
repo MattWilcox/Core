@@ -70,37 +70,60 @@ $(document).ready(function(){
 
 /* Fix baseline grid for images of unknown height */
   function fixBaseline(){
+  	
     $("img").each(function(run) {
+    	var total_footprint=null;
+
       if($(this).parents(".popup").length > 0){ /* the image is inside a popup box */
-        var parent_margin = parseFloat($(this).parents(".popup").css("margin-bottom").replace("px",""));
-				/*
-        if($(this).parents("a").next("p") != ""){
+        var popup_margin_bottom  = parseFloat($(this).parents(".popup").css("margin-bottom").replace("px",""));
+        var popup_padding_bottom = parseFloat($(this).parents(".popup").css("padding-bottom").replace("px",""));
+        var popup_border_bottom  = parseFloat($(this).parents(".popup").css("border-bottom-width").replace("px",""));
+        var popup_padding_top    = parseFloat($(this).parents(".popup").css("padding-top").replace("px",""));
+        var popup_border_top     = parseFloat($(this).parents(".popup").css("border-top-width").replace("px",""));
+        var popup_footprint      = parseFloat(popup_margin_bottom+popup_padding_bottom+popup_border_bottom+popup_padding_top+popup_border_top);
+
+				total_footprint          = popup_footprint;
+				
+				if($(this).parents("a").next("p").html() != null) {
         	var caption_height         = parseFloat($(this).parents("a").next("p").css("height").replace("px",""));
         	var caption_margin_top     = parseFloat($(this).parents("a").next("p").css("margin-top").replace("px",""));
         	var caption_margin_bottom  = parseFloat($(this).parents("a").next("p").css("margin-bottom").replace("px",""));
         	var caption_padding_top    = parseFloat($(this).parents("a").next("p").css("padding-top").replace("px",""));
         	var caption_padding_bottom = parseFloat($(this).parents("a").next("p").css("padding-bottom").replace("px",""));
+
         	var caption_footprint      = parseFloat(caption_height+caption_margin_top+caption_margin_bottom+caption_padding_top+caption_padding_bottom);
-        } */
+
+        	total_footprint = total_footprint + caption_footprint;
+        }
 	    } else 
 	    if($(this).parent("a").length > 0){ /* the image is inside an anchor but not a popup box */
         var parent_margin = parseFloat($(this).parent("a").css("margin-bottom").replace("px",""));
+        total_footprint = total_footprint + parent_margin;
       } else {
       	if($(this).css('display','inline')) { return; }
-      	var parent_margin = 0;
       }
 
-      var baseline          = parseFloat($("html").css("line-height").replace("px",""));
-      var img_height        = parseFloat($(this).height());
-      var img_margin_top    = parseFloat($(this).css("margin-top").replace("px",""));
-      var img_margin_bottom = parseFloat($(this).css("margin-bottom").replace("px",""));
-      var img_border_top    = parseFloat($(this).css("border-top-width").replace("px",""));
-      var img_border_bottom = parseFloat($(this).css("border-bottom-width").replace("px",""));
+      var baseline           = parseFloat($("html").css("line-height").replace("px",""));
+      var fontsize           = parseFloat($("html").css("font-size").replace("px",""));
 
-      var img_footprint     = parseFloat(img_margin_top+img_border_top+img_height+img_border_bottom+img_margin_bottom+parent_margin);
+      var img_height         = parseFloat($(this).height());
 
-      var remainder         = parseFloat(img_footprint%baseline);
+      // shrink the image height to a whole pixel to avoid rounding errors in the layout engine
+      var downscale = Math.floor(img_height);
+
+      var img_margin_top     = parseFloat($(this).css("margin-top").replace("px",""));
+      var img_margin_bottom  = parseFloat($(this).css("margin-bottom").replace("px",""));
+      var img_border_top     = parseFloat($(this).css("border-top-width").replace("px",""));
+      var img_border_bottom  = parseFloat($(this).css("border-bottom-width").replace("px",""));
+
+      var total_footprint    = total_footprint + parseFloat(img_margin_top+img_border_top+img_height+img_border_bottom+img_margin_bottom);
+
+      var remainder         = parseFloat(total_footprint%baseline);
       var offset            = parseFloat(baseline-remainder);
+      
+      if($(this).parents(".popup.dc_full").length > 0) {
+      	offset = offset+baseline;  	
+      }
 
       if($(this).parents(".popup").length > 0){ /* apply margin to popup box */
         $(this).parents(".popup").css("margin-bottom",offset+"px");
@@ -110,6 +133,8 @@ $(document).ready(function(){
       } else { /* apply margin to image */
         $(this).css("margin-bottom",offset+"px");
       }
+
+      $(this).css("height",downscale);
     });
   }
 
