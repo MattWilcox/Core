@@ -37,6 +37,20 @@ $(document).ready(function(){
 	NOTE: Functions used throughout the file
 	----------------------------------------------------------------------------------------------------------------------- */
 
+/* timer function to throttle the window resize event */
+	var waitForFinalEvent = (function () {
+	  var timers = {};
+	  return function (callback, ms, uniqueId) {
+	    if (!uniqueId) {
+	      uniqueId = "Don't call this twice without a uniqueId";
+	    }
+	    if (timers[uniqueId]) {
+	      clearTimeout (timers[uniqueId]);
+	    }
+	    timers[uniqueId] = setTimeout(callback, ms);
+	  };
+	})();
+
 /* Highlight a given element using an animated graphic overlay */
 	function targetHighlight(target) {
 
@@ -76,6 +90,8 @@ $(document).ready(function(){
     	/* abort now if it's not an image set as display block */
     	if($(this).css('display') == 'inline') { return; }
 
+    	$(this).attr('style',''); // reset JS applied margins
+
     	/* setup variables */
     	var this_img        = $(this);
     	var baseline        = parseFloat($("html").css("line-height").replace("px",""));
@@ -85,6 +101,7 @@ $(document).ready(function(){
       /* IF: the image is inside a popup box */
       if($(this).parents(".popup").length > 0){
       	var popup = $(this).parents(".popup");
+      	popup.attr('style',''); // reset JS applied margins
 
         var popup_margin_bottom  = parseFloat(popup.css("margin-bottom").replace("px",""));
         var popup_padding_bottom = parseFloat(popup.css("padding-bottom").replace("px",""));
@@ -176,6 +193,13 @@ $(document).ready(function(){
 	}).blur(function(){
 		$(this).parents('ul').removeClass('focus');
 	});
+
+/* run the fixBaseline function after window resizes end */
+  $(window).resize(function(){
+    waitForFinalEvent(function(){
+      fixBaseline();
+    }, 200, "windowresize");
+  });
 
 /*
 	=events to run after the entire page has finished loading */
