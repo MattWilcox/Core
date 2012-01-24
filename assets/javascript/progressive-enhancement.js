@@ -72,10 +72,16 @@ $(document).ready(function(){
   function fixBaseline(){
     $("img").each(function(run) {
       if($(this).parents(".popup").length > 0){ /* the image is inside a popup box */
-        var popup_margin = parseFloat($(this).parents(".popup").css("margin-bottom").replace("px",""));
-        if($(this).parent("a").next("p")){
-        	var caption_height = $(this).parent("a").next("p").css("height").replace("px",""));
-        }
+        var parent_margin = parseFloat($(this).parents(".popup").css("margin-bottom").replace("px",""));
+				/*
+        if($(this).parents("a").next("p") != ""){
+        	var caption_height         = parseFloat($(this).parents("a").next("p").css("height").replace("px",""));
+        	var caption_margin_top     = parseFloat($(this).parents("a").next("p").css("margin-top").replace("px",""));
+        	var caption_margin_bottom  = parseFloat($(this).parents("a").next("p").css("margin-bottom").replace("px",""));
+        	var caption_padding_top    = parseFloat($(this).parents("a").next("p").css("padding-top").replace("px",""));
+        	var caption_padding_bottom = parseFloat($(this).parents("a").next("p").css("padding-bottom").replace("px",""));
+        	var caption_footprint      = parseFloat(caption_height+caption_margin_top+caption_margin_bottom+caption_padding_top+caption_padding_bottom);
+        } */
 	    } else 
 	    if($(this).parent("a").length > 0){ /* the image is inside an anchor but not a popup box */
         var parent_margin = parseFloat($(this).parent("a").css("margin-bottom").replace("px",""));
@@ -90,7 +96,9 @@ $(document).ready(function(){
       var img_margin_bottom = parseFloat($(this).css("margin-bottom").replace("px",""));
       var img_border_top    = parseFloat($(this).css("border-top-width").replace("px",""));
       var img_border_bottom = parseFloat($(this).css("border-bottom-width").replace("px",""));
+
       var img_footprint     = parseFloat(img_margin_top+img_border_top+img_height+img_border_bottom+img_margin_bottom+parent_margin);
+
       var remainder         = parseFloat(img_footprint%baseline);
       var offset            = parseFloat(baseline-remainder);
 
