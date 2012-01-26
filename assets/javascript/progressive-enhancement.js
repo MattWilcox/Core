@@ -194,6 +194,18 @@ $(document).ready(function(){
 		$(this).parents('ul').removeClass('focus');
 	});
 
+/*
+	=colorbox */
+	if($(".popup > a").length > 0) {
+		$(".popup > a").colorbox({
+			transition: 'elastic',
+			speed: 350,
+			opacity: .85,
+			maxWidth:"80%",
+			maxHeight:"90%"
+		}); 
+	}
+
 /* run the fixBaseline function after window resizes end */
   $(window).resize(function(){
     waitForFinalEvent(function(){
