@@ -3,7 +3,7 @@
 
   	// Create some configuration options, and give sensible defaults
     var settings = $.extend({
-      'container' : 'popup'
+      'container' : '.popup'
     }, options);
   
     return this.each(function() {
@@ -27,21 +27,21 @@
       var total_footprint = null;
 
       /* IF: the image is inside a popup box */
-      if(this_img.parents("."+settings.container).length > 0){
-      	var popup = this_img.parents("."+settings.container);
+      if(this_img.parents(settings.container).length > 0){
+      	var container = this_img.parents(settings.container);
 
-      	popup.attr('style',''); // reset JS applied margins
+        container.attr('style',''); // reset JS applied margins
 
-        total_footprint = Math.floor(popup.outerHeight(false));
-	    } 
-	    /* ELSE IF: the image is inside an anchor but not a popup box */
-	    else if(this_img.parent("a").length > 0){
-        var parent_margin = parseFloat(this_img.parent("a").css("margin-bottom").replace("px",""));
-        total_footprint   = total_footprint + parent_margin;
-      }
+        // shrink the image height to a whole pixel value to avoid rounding errors in the layout engine
+        // NOTE, this introduces a very very slight difference in aspect ratio. You'll never see it.
+        var container_height = Math.ceil(container.height());
+        container.css("height",container_height);
+
+        total_footprint = Math.floor(container.outerHeight(false));
+	    }
       
-      var remainder  = parseFloat(total_footprint%baseline);
-      var offset     = parseFloat(baseline-remainder);
+      var remainder = parseFloat(total_footprint%baseline);
+      var offset    = parseFloat(baseline-remainder);
       
       if(
         this_img.parents(".popup.dc_full").length > 0 // if the parent is full width we always want at least one line of seperation
@@ -50,12 +50,9 @@
       	offset = offset+baseline;
       }
 
-      if(this_img.parents("."+settings.container).length > 0){ /* apply margin to popup box */
-        this_img.parents("."+settings.container).css("margin-bottom",offset+"px");
-      } else
-      if(this_img.parent("a").length > 0){ /* apply margin to anchor */
-        this_img.parent("a").css("margin-bottom",offset+"px");
-      } else { /* apply margin to image */
+      if(this_img.parents(settings.container).length > 0){ /* apply margin to specified container box */
+        this_img.parents(settings.container).css("margin-bottom",offset+"px");
+      } else { /* apply margin to image itself */
         this_img.css("margin-bottom",offset+"px");
       }
     });
