@@ -286,8 +286,15 @@
   ----------------------------------------------------------------------------------------------------------------------- */    
 
 /* while we're building, let's see a baseline */
-	html {
+	html,
+	.font-measure {
 		background-image : url(../images/_baseline-22.png); }
+
+/* let's also enable us to find our specific font measures */
+	.font-measure {
+		outline: 1px solid red;}
+	.anatomy { /* use this to find where the baseline sits so we can use it for our type math later */
+		font-size: 100px; margin: 0; line-height: 1; }
 	
 /*
 	=website header */

@@ -9,11 +9,17 @@
     return this.each(function() {
 
     	var this_img = $(this);
-
-    	/* abort now if it's not an image set as display block */
+      
+      /* abort now if it's not an image set as display block */
     	if($(this).css('display') == 'inline') { return; }
 
     	$(this).attr('style',''); // reset JS applied margins on the image
+
+      // shrink the image height to a whole pixel value to avoid rounding errors in the layout engine
+      // NOTE, this introduces a very very slight difference in aspect ratio. You'll never see it.
+      var img_height = this_img.height();
+      var img_height = Math.floor(img_height);
+      this_img.css("height",img_height);
 
     	/* setup variables */
     	var baseline        = parseFloat($("html").css("line-height").replace("px",""));
@@ -33,12 +39,14 @@
         var parent_margin = parseFloat(this_img.parent("a").css("margin-bottom").replace("px",""));
         total_footprint   = total_footprint + parent_margin;
       }
-
-      var img_height = this_img.height();
+      
       var remainder  = parseFloat(total_footprint%baseline);
       var offset     = parseFloat(baseline-remainder);
       
-      if(this_img.parents(".popup.dc_full").length > 0) {
+      if(
+        this_img.parents(".popup.dc_full").length > 0 // if the parent is full width we always want at least one line of seperation
+        || offset<(baseline/4) // avoid the text wrapping directly underneath, there needs to be at least 1/4 line-height gap
+      ) {
       	offset = offset+baseline;
       }
 
@@ -50,10 +58,6 @@
       } else { /* apply margin to image */
         this_img.css("margin-bottom",offset+"px");
       }
-
-      // shrink the image height to a whole pixel to avoid rounding errors in the layout engine
-      var downscale = Math.floor(img_height);
-      this_img.css("height",downscale);
     });
   };
 })( jQuery );
