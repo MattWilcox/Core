@@ -37,7 +37,7 @@ $(document).ready(function(){
 	NOTE: Functions used throughout the file
 	----------------------------------------------------------------------------------------------------------------------- */
 
-/* timer function to throttle the window resize event */
+  // timer function to throttle the window resize event 
 	var waitForFinalEvent = (function () {
 	  var timers = {};
 	  return function (callback, ms, uniqueId) {
@@ -125,7 +125,9 @@ $(document).ready(function(){
 		}); 
 	}
 
-/* run the fixBaseline function after window resizes end */
+	$("img").baselineAlign({container:'.popup'});
+
+ 	// run the fixBaseline function after window resizes end 
   $(window).resize(function(){
     waitForFinalEvent(function(){
       $("img").baselineAlign({container:'.popup'});
