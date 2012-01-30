@@ -128,7 +128,7 @@ $(document).ready(function(){
 /* run the fixBaseline function after window resizes end */
   $(window).resize(function(){
     waitForFinalEvent(function(){
-      $("img").baselineAlign();
+      $("img").baselineAlign({container:'.popup'});
     }, 200, "windowresize");
   });
 
@@ -138,7 +138,7 @@ $(document).ready(function(){
 		$("body").addClass("load-complete");
 
 		/* run baselineAlign on page load too */
-    $("img").baselineAlign();
+    $("img").baselineAlign({container:'.popup'});
 	});
 	
 }); // $(document).ready
