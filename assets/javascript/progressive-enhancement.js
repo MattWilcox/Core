@@ -82,87 +82,6 @@ $(document).ready(function(){
 			              });
 	} // function targetHighlight(target)
 
-/* Fix baseline grid for images of unknown height */
-  function fixBaseline(){
-  	
-    $("img").each(function(run) {
-
-    	/* abort now if it's not an image set as display block */
-    	if($(this).css('display') == 'inline') { return; }
-
-    	$(this).attr('style',''); // reset JS applied margins
-
-    	/* setup variables */
-    	var this_img        = $(this);
-    	var baseline        = parseFloat($("html").css("line-height").replace("px",""));
-      var fontsize        = parseFloat($("html").css("font-size").replace("px",""));
-      var total_footprint = null;
-
-      /* IF: the image is inside a popup box */
-      if($(this).parents(".popup").length > 0){
-      	var popup = $(this).parents(".popup");
-      	popup.attr('style',''); // reset JS applied margins
-
-        var popup_margin_bottom  = parseFloat(popup.css("margin-bottom").replace("px",""));
-        var popup_padding_bottom = parseFloat(popup.css("padding-bottom").replace("px",""));
-        var popup_border_bottom  = parseFloat(popup.css("border-bottom-width").replace("px",""));
-        var popup_padding_top    = parseFloat(popup.css("padding-top").replace("px",""));
-        var popup_border_top     = parseFloat(popup.css("border-top-width").replace("px",""));
-        var popup_footprint      = parseFloat(popup_margin_bottom+popup_padding_bottom+popup_border_bottom+popup_padding_top+popup_border_top);
-
-				total_footprint          = popup_footprint;
-				
-				/* does it have a caption too? */
-				if($(this).parents("a").next("p").html() != null) {
-					var caption = $(this).parents("a").next("p");
-
-        	var caption_height         = parseFloat(caption.css("height").replace("px",""));
-        	var caption_margin_top     = parseFloat(caption.css("margin-top").replace("px",""));
-        	var caption_margin_bottom  = parseFloat(caption.css("margin-bottom").replace("px",""));
-        	var caption_padding_top    = parseFloat(caption.css("padding-top").replace("px",""));
-        	var caption_padding_bottom = parseFloat(caption.css("padding-bottom").replace("px",""));
-
-        	var caption_footprint      = parseFloat(caption_height+caption_margin_top+caption_margin_bottom+caption_padding_top+caption_padding_bottom);
-
-        	total_footprint = total_footprint + caption_footprint;
-        }
-	    } 
-	    /* ELSE IF: the image is inside an anchor but not a popup box */
-	    else if($(this).parent("a").length > 0){
-        var parent_margin = parseFloat($(this).parent("a").css("margin-bottom").replace("px",""));
-        total_footprint   = total_footprint + parent_margin;
-      }
-
-      var img_height         = parseFloat(this_img.height());
-      var img_margin_top     = parseFloat(this_img.css("margin-top").replace("px",""));
-      var img_margin_bottom  = parseFloat(this_img.css("margin-bottom").replace("px",""));
-      var img_border_top     = parseFloat(this_img.css("border-top-width").replace("px",""));
-      var img_border_bottom  = parseFloat(this_img.css("border-bottom-width").replace("px",""));
-
-      var total_footprint    = total_footprint + parseFloat(img_margin_top+img_border_top+img_height+img_border_bottom+img_margin_bottom);
-
-      var remainder         = parseFloat(total_footprint%baseline);
-      var offset            = parseFloat(baseline-remainder);
-      
-      if($(this).parents(".popup.dc_full").length > 0) {
-      	offset = offset+baseline;  	
-      }
-
-      if($(this).parents(".popup").length > 0){ /* apply margin to popup box */
-        $(this).parents(".popup").css("margin-bottom",offset+"px");
-      } else
-      if($(this).parent("a").length > 0){ /* apply margin to anchor */
-        $(this).parent("a").css("margin-bottom",offset+"px");
-      } else { /* apply margin to image */
-        $(this).css("margin-bottom",offset+"px");
-      }
-
-      // shrink the image height to a whole pixel to avoid rounding errors in the layout engine
-      var downscale = Math.floor(img_height);
-      $(this).css("height",downscale);
-    });
-  }
-
 /*
 	=behaviours --------------------------------------------------------------------------------------------------------------
 	NOTE: Implement certain functionality based on the page being viewed or a user interaction
@@ -209,7 +128,7 @@ $(document).ready(function(){
 /* run the fixBaseline function after window resizes end */
   $(window).resize(function(){
     waitForFinalEvent(function(){
-      fixBaseline();
+      $("img").baselineAlign();
     }, 200, "windowresize");
   });
 
@@ -218,8 +137,8 @@ $(document).ready(function(){
 	$(window).bind('load', function() {
 		$("body").addClass("load-complete");
 
-		/* run fixBaseline on page load too */
-    fixBaseline();
+		/* run baselineAlign on page load too */
+    $("img").baselineAlign();
 	});
 	
 }); // $(document).ready
