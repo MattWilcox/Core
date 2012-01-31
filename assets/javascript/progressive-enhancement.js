@@ -37,20 +37,6 @@ $(document).ready(function(){
 	NOTE: Functions used throughout the file
 	----------------------------------------------------------------------------------------------------------------------- */
 
-  // timer function to throttle the window resize event 
-	var waitForFinalEvent = (function () {
-	  var timers = {};
-	  return function (callback, ms, uniqueId) {
-	    if (!uniqueId) {
-	      uniqueId = "Don't call this twice without a uniqueId";
-	    }
-	    if (timers[uniqueId]) {
-	      clearTimeout (timers[uniqueId]);
-	    }
-	    timers[uniqueId] = setTimeout(callback, ms);
-	  };
-	})();
-
 /* Highlight a given element using an animated graphic overlay */
 	function targetHighlight(target) {
 
@@ -127,20 +113,10 @@ $(document).ready(function(){
 
 	$("img").baselineAlign({container:'.popup'});
 
- 	// run the fixBaseline function after window resizes end 
-  $(window).resize(function(){
-    waitForFinalEvent(function(){
-      $("img").baselineAlign({container:'.popup'});
-    }, 200, "windowresize");
-  });
-
 /*
 	=events to run after the entire page has finished loading */
 	$(window).bind('load', function() {
 		$("body").addClass("load-complete");
-
-		/* run baselineAlign on page load too */
-    $("img").baselineAlign({container:'.popup'});
 	});
 	
 }); // $(document).ready
