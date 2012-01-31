@@ -1,8 +1,3 @@
-/* 
-This is not yet a final-quality plugin. When it is I'll be releasing it on GitHub along with some instructions
-
--Matt Wilcox http://mattwilcox.net */
-
 /*
   JQUERY.BASELINEALIGN-1.0.JS
   
@@ -12,46 +7,8 @@ This is not yet a final-quality plugin. When it is I'll be releasing it on GitHu
   
   --------------------------------------------------------------------------------------------------------------------------
   FILE INFO
-  Last updated:     2012/01/30
+  Last updated:     2012/01/31
   Last updated by:  Matt Wilcox
-  -----------------------------------------------------------------------------------------------------------------------
-  
-  Current ARGH list:
-    * get the thing to wait until the window has completed loading before firing the baselineAlign function
-    * get it to watch window resize and apply the baselineAlign function again when it finishes
-    
-  Although the plugin doesn't do that automatically yet you can get the same effect by calling it follows:
-
-  ===========================================================================================
-  
-  // timer function to throttle the window resize event 
-  var waitForFinalEvent = (function () {
-    var timers = {};
-    return function (callback, ms, uniqueId) {
-      if (!uniqueId) {
-        uniqueId = "Don't call this twice without a uniqueId";
-      }
-      if (timers[uniqueId]) {
-        clearTimeout (timers[uniqueId]);
-      }
-      timers[uniqueId] = setTimeout(callback, ms);
-    };
-  })();
-
-  // run the baselineAlign function after window resizes end 
-  $(window).resize(function(){
-    waitForFinalEvent(function(){
-      $("img").baselineAlign({container:'.popup'});
-    }, 200, "windowresize");
-  });
-
-  // events to run after the entire page has finished loading
-  $(window).bind('load', function() {
-    $("img").baselineAlign({container:'.popup'});
-  });
-
-  ===========================================================================================
-  
   ----------------------------------------------------------------------------------------------------------------------- */
 
 (function( $ ) {
