@@ -120,21 +120,34 @@ This is not yet a final-quality plugin. When it is I'll be releasing it on GitHu
     },
 
     init : function() {
-      $(window).bind('load', methods.baselineAlign.apply(this, arguments));
-      $(window).bind('resize.baselineAlign', methods.baselineAlign.apply(this, arguments));
+      var didResize = false;
+      var didLoad   = false;
+      var a = this; // I wish I knew why this works
+      var b = arguments; // I wish I knew why this works
+
+      $(window).resize(function(){
+       didResize = true;
+      });
+
+      $(window).load( methods.baselineAlign.apply(this,arguments));
+
+      setInterval(function(){
+        if(didResize){
+          didResize = false;
+          return methods.baselineAlign.apply(a, b);  // I wish I knew why this works
+        }
+      }, 500);
     }
   };
 
   $.fn.baselineAlign = function( method ) {
-    
     // Method calling logic
     if ( methods[method] ) {
       return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
     } else if ( typeof method === 'object' || ! method ) {
-      return methods.baselineAlign.apply( this, arguments );
+      return methods.init.apply( this, arguments );
     } else {
       $.error( 'Method ' +  method + ' does not exist on jQuery.tooltip' );
-    }    
-  
+    }  
   };
 })( jQuery );
