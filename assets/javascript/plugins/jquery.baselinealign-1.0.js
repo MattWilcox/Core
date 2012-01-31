@@ -126,15 +126,17 @@ This is not yet a final-quality plugin. When it is I'll be releasing it on GitHu
       var b = arguments; // I wish I knew why this works
 
       $(window).resize(function(){
-       didResize = true;
+        didResize = true;
       });
 
-      $(window).load( methods.baselineAlign.apply(this,arguments));
+      $(window).load( methods.baselineAlign.apply(a,b)); // I wish I knew why this works
+      // and I wish I knew why this line also throws an error in jQuery 1.7.1
+      // Error: ((f.event.special[r.origType] || {}).handle || r.handler).apply is not a function
 
       setInterval(function(){
         if(didResize){
           didResize = false;
-          return methods.baselineAlign.apply(a, b);  // I wish I knew why this works
+          return methods.baselineAlign.apply(a, b); // I wish I knew why this works
         }
       }, 500);
     }
@@ -147,7 +149,7 @@ This is not yet a final-quality plugin. When it is I'll be releasing it on GitHu
     } else if ( typeof method === 'object' || ! method ) {
       return methods.init.apply( this, arguments );
     } else {
-      $.error( 'Method ' +  method + ' does not exist on jQuery.tooltip' );
+      $.error( 'Method ' +  method + ' does not exist on jQuery.baselineAlign' );
     }  
   };
 })( jQuery );
