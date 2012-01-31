@@ -64,7 +64,7 @@ $(document).ready(function(){
 	}
   
   // we always want to load progressive enhancements at the end of the load queue
-  $.requireJs('/assets/javascript/plugins/jquery.baselinealign-1.0.js');
+  $.requireJs('/assets/javascript/plugins/jquery.baselinealign-1.0-min.js');
   $.requireJs('/assets/javascript/progressive-enhancement.js');
   
 }); // $(document).ready
