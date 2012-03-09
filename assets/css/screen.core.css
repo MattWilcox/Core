@@ -286,6 +286,7 @@
   .dc_small  { width: 20%; }
   .dc_medium { width: 40%; }
   .dc_large  { width: 60%; }
+  .hide-text { text-indent: 100%; white-space: nowrap; overflow: hidden; }
 
 /*
   =modules --------------------------------------------------------------------------------------------------------------
