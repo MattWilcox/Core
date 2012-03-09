@@ -39,15 +39,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
 (function(a){function b(a){return/(http|https):\/\//.test(a)}a.extend({requireConfig:{routeJs:"",routeCss:""},ODqueue:[],ODpending:null,requireJs:function(c,d,e,f,g){if(e!=undefined||e==null){a.extend(a.requireConfig,e)}var h={url:c,callback:d,opts:e,obj:f,scope:g};if(this.ODpending){this.ODqueue.push(h);return}this.ODpending=h;var i=this;var j=b(c)?c:a.requireConfig.routeJs+c;var k=document.getElementsByTagName("head")[0];var l=document.createElement("script");a(l).bind("load",function(){i.requestComplete()});l.onreadystatechange=function(){if(this.readyState==="loaded"||this.readyState==="complete"){i.requestComplete()}};l.type="text/javascript";l.src=j;k.appendChild(l)},requestComplete:function(){if(this.ODpending.callback){if(this.ODpending.obj){if(this.ODpending.scope){this.ODpending.callback.call(this.ODpending.obj)}else{this.ODpending.callback.call(window,this.ODpending.obj)}}else{this.ODpending.callback.call()}}this.ODpending=null;if(this.ODqueue.length>0){var a=this.ODqueue.shift();this.requireJs(a.url,a.callback,a.opts,a.obj,a.scope)}},requireCss:function(b){if(document.createStyleSheet){document.createStyleSheet(a.requireConfig.routeCss+b)}else{var c=document.createElement("link");a(c).attr({href:a.requireConfig.routeCss+b,type:"text/css",media:"screen",rel:"stylesheet"}).appendTo(a("head").get(0))}}})})(jQuery)
 
 /*
-	=modernizr ---------------------------------------------------------------------------------------------------------------
-	NOTE: Use Modernizr feature detection to load polyfills as required (Modernizr library loaded in HTML head)
-	----------------------------------------------------------------------------------------------------------------------- */
-Modernizr.load({
-	test : Modernizr.mq('(min-width: 0px)'),
-	nope : '/assets/javascript/polyfills/respond.min.js'
-});
-
-/*
 	=loading -----------------------------------------------------------------------------------------------------------------
 	NOTE:      Use on-demand to inspect the page mark-up and, if required, load in needed plug-ins.
 	           This allows the JS to manage it's own asset loading, using the minimum JS for any given page without having
@@ -62,9 +53,9 @@ $(document).ready(function(){
 		$.requireJs('/assets/javascript/plugins/colorbox/jquery.colorbox-min.js');
 		$.requireCss('/assets/javascript/plugins/colorbox/colorbox.css');
 	}
-  
-  // we always want to load progressive enhancements at the end of the load queue
-  $.requireJs('/assets/javascript/plugins/jquery.baselinealign-1.0-min.js');
-  $.requireJs('/assets/javascript/progressive-enhancement.js');
-  
+
+	// we always want to load progressive enhancements at the end of the load queue
+	$.requireJs('/assets/javascript/plugins/jquery.baselinealign-1.0-min.js');
+	$.requireJs('/assets/javascript/progressive-enhancement.js');
+
 }); // $(document).ready

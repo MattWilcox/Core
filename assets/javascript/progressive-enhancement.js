@@ -65,7 +65,7 @@ $(document).ready(function(){
 		$('#attention').animate({opacity: 1}, animation_speed*2)
 		               .animate({opacity: 0}, animation_speed*4, function() {
 			               $('#attention').remove();
-			              });
+		               });
 	} // function targetHighlight(target)
 
 /*
