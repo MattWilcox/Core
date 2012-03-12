@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="styleguide">
+<html lang="en" class="home">
 <head>
 	<!-- meta information -->
 	<meta charset="utf-8" />
@@ -16,6 +16,9 @@
 	<meta name="language"
 	      content="en-GB" />
 
+	<!-- Who worked on this? -->
+	<link type="text/plain" rel="author" href="/humans.txt" />
+
 	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
 	<meta name="viewport"
 	      content="width=device-width,initial-scale=1">
@@ -28,6 +31,11 @@
 	     NOTE:      breakpoints are decided based on the design, not device
 	     REFERENCE: http://mattwilcox.net/archive/entry/id/1075/ -->
 	<link rel="stylesheet" media="only screen and (min-width: 480px)"  href="/assets/css/screen.480.css" />
+
+	<!-- Deal with IE < 9 which can't do media queries. Given up on respond.js, it's too unreliable and causes crashes -->
+	<!--[if lt IE 9 & (!IEMobile)]>
+		<link rel="stylesheet" href="/assets/css/screen.480.css" />
+	<![endif]-->
 
 	<!-- Favicon for Retina iThings -->
 	<link rel="apple-touch-icon-precomposed"

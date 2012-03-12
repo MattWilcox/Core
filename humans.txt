@@ -1,0 +1,20 @@
+﻿/* TEAM 
+   ----------------------------------------------------------------------------------------------------------------------- */
+   
+   Author:        Matt Wilcox
+   Contact:       mail [at] matthewwilcox [dot] com
+   Website:       http://mattwilcox.net
+   Twitter:       @mattwilcox
+   Meatspace:     North Wales, UK
+   Contributions: Everything
+
+/* SITE 
+   ----------------------------------------------------------------------------------------------------------------------- */
+   
+   Last update:   2012/03/12
+   Language:      English (British)
+   Doctype:       HTML5 with CSS3
+   Tools:         No CMS
+   IDE:           SublimeText 2
+   Built on:      Mac OS X
+   Served by:     Some flavour of Linux
