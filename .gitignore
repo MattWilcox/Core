@@ -1,2 +1,4 @@
 .DS_Store
 ai-cache
+.sass-cache
+assets/css
