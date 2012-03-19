@@ -1,0 +1,108 @@
+/*
+	=base_rules -----------------------------------------------------------------------------------------------------------
+	NOTE:  This section styles "default" elements, that is, how a <p> or <em> etc look by default, without
+	       any page or class specific over-rides.
+	----------------------------------------------------------------------------------------------------------------------- */
+	
+/*
+	=html =body */
+	html {
+		background-color : #ddd; color : #666; }
+	body {
+		width : 90%; margin : 0 auto; }
+
+/*
+	=q */
+	q,
+	blockquote > p:first-child,
+	blockquote > p:last-child {
+		quotes: '“' '”' '‘' '’'; } /* open then close, then new nesting level */
+	q:before,
+	blockquote > p:first-child:before {
+		content: open-quote; }
+	q:after,
+	blockquote > p:last-of-type:after {
+		content: close-quote; }
+
+/*
+	=blockquote */
+	blockquote {
+		padding : 1.375em 1em; border-left: .5em solid #999;
+		background: #fff; }
+	blockquote footer {
+		display: block; margin-top: 1.375em; padding-top: 1.3125em; border-top: 0.0625em dotted #999; }
+
+/*
+	=sup */
+	sup {
+		vertical-align : top; font-size : .75em; }
+
+/*
+	=sub */
+	sub {
+		vertical-align : bottom; font-size : .75em; }
+
+/*
+	=code */
+	code {
+		font: .85em/1 Courier, monospace; color: #006; }
+	 
+/*
+	=a */
+	a {
+		-webkit-transition : box-shadow linear 0.2s, background-color linear 0.2s;
+		-moz-transition    : box-shadow linear 0.2s, background-color linear 0.2s;
+		-o-transition      : box-shadow linear 0.2s, background-color linear 0.2s;
+		-ms-transition     : box-shadow linear 0.2s, background-color linear 0.2s;
+		transition         : box-shadow linear 0.2s, background-color linear 0.2s; }
+	a:link    { color : #66b; text-decoration : none; }
+	a:visited { color : #66b; text-decoration : none; }
+	a:hover   { text-decoration : underline; }
+	a:focus   { box-shadow: 0 0 6px rgba(255,255,255,1); background-color: #fff; outline: 0; }
+	a:active  {  }
+	/* :target   { background-color : #ff6; } */
+	 
+/*
+  =img */
+	img {
+		max-width : 100%; }
+	#target_hilight {
+		position : absolute; }
+	a img {
+		margin : 0; }
+
+/*
+	=table */
+	tbody tr:nth-child(2n+1) {
+		background-color: rgba(0,0,0,.1); }
+
+/*
+	=forms */
+	input[type="text"],
+	input[type="email"],
+	input[type="search"],
+	textarea {
+		border: 0.0625em solid #999; /* 1px */
+		-webkit-transition : border linear 0.2s, box-shadow linear 0.2s;
+		-moz-transition    : border linear 0.2s, box-shadow linear 0.2s;
+		-o-transition      : border linear 0.2s, box-shadow linear 0.2s;
+		-ms-transition     : border linear 0.2s, box-shadow linear 0.2s;
+		transition         : border linear 0.2s, box-shadow linear 0.2s; }
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	input[type="search"]:focus,
+	textarea:focus {
+		border-color: #bbb;
+		box-shadow: 0 0 10px rgba(255,255,255,1);
+		outline: 0; }
+	
+	label.focus span {
+		color : #000; }
+
+/* =div */
+	
+/* =span */
+	label span {
+		display : block; }
+	label.boolean span {
+		display : inline; }

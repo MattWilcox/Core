@@ -1,0 +1,107 @@
+/*
+	SCREEN.CSS
+	This is where styles for on-screen media are declaired.
+	This style sheet establishes the core styles used for all resolutions before declaring the baseline 320px mobile layout.
+	
+	--------------------------------------------------------------------------------------------------------------------------
+	FILE INFO
+	Last updated:     2012/03/19
+	Last updated by:  Matt Wilcox
+
+	--------------------------------------------------------------------------------------------------------------------------
+	STYLEGUIDE
+	Indentation uses tabs [why: http://lea.verou.me/2012/01/why-tabs-are-clearly-superior/]
+
+	Rules obey the following anatomy:
+
+		selector {
+			POSITIONING LINE [position,top,left,clear, ETC]
+			BOX MODEL LINE [display,margin,border,padding,width, ETC]
+			TYPOGRAPHY LINE [font,text-indent,font-style, ETC]
+			PREFIXED PROPERTIES [-moz-,-webkit-, ETC] }
+
+	This file is divided into the following sections:
+
+		=global_reset         |  Brings all browsers into line 
+		=vendor_enhancements  |  Fix various issues and/or enable enhancements
+		=typography           |  How type looks and behaves
+		=base_rules           |  Styling of raw elments
+		=display_classes      |  Should very rarely be used, and never for page layout!
+		=modules              |  Discrete components of a page [sub-divided]
+		=layout               |  How modules are laid out on given pages [sub-divided]
+
+	Units of measurement should always be:
+
+		LAYOUT:       % or no unit - you do not know where your module is going on a page, so you don't know its absolute size.
+		LINE-HEIGHTS: unitless, so the line height is a multiple of the current element's font-size
+		TYPE:         rems for type, with em fallbacks
+
+		See http://csswizardry.com/2011/12/measuring-and-sizing-uis-2011-style/ for details.
+
+	----------------------------------------------------------------------------------------------------------------------- */
+
+@import "_variables";
+@import "_reset";
+@import "_vendor-enhancements";
+@import "_typography";
+@import "_base-rules";
+
+/*
+  =display-classes ---------------------------------------------------------------------------------------------------------
+  NOTE: These are to be avoided if at all possible, it is rare they are acceptable. Do not use them for page layout!
+  ----------------------------------------------------------------------------------------------------------------------- */
+	.dc_left   { float: left; margin-right: 1em; }
+	.dc_right  { float: right; margin-left: 1em; }
+
+	.dc_small  { width: 20%; }
+	.dc_medium { width: 40%; }
+	.dc_large  { width: 60%; }
+	.hide-text { text-indent: 100%; white-space: nowrap; overflow: hidden; }
+
+/*
+  =modules --------------------------------------------------------------------------------------------------------------
+  NOTE: Modules are discrete sections of data that may be used on any page, e.g., "Latest News"
+  ----------------------------------------------------------------------------------------------------------------------- */    
+
+/* while we're building, let's see a baseline */
+	html,
+	.font-measure {
+		background-image : url(../images/_baseline-22.png); }
+
+/* let's also enable us to find our specific font measures */
+	.font-measure {
+		outline: 1px solid red;}
+	.anatomy { /* use this to find where the baseline sits so we can use it for our type math later */
+		font-size: 100px; margin: 0; line-height: 1; }
+	
+/*
+	=website header */
+	#site_context  {
+		margin-bottom : 0; }
+	#site_context .title {
+		margin : 0; }
+		 
+/*
+	=website footer */
+	#content {
+		margin-top : 2em; padding-top : 1.5em; border-top : 1px solid #fff; }
+		 
+/*
+	=popup */
+	.popup {
+		margin-bottom : 1.375em;
+		margin-bottom : 1.375rem; }
+	.popup > a,
+	.popup img {
+		display : block; }
+
+	.popup.captioned {
+		padding: .5em; background-color: rgba(255,255,255,.8); }
+	.popup .caption {
+		font-size: .85em; margin: .5em 0 0;	}
+		 
+/*
+  =layout ---------------------------------------------------------------------------------------------------------------
+  NOTE:       How modules are laid out on specific pages
+  ----------------------------------------------------------------------------------------------------------------------- */
+	

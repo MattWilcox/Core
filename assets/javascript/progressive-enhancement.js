@@ -17,7 +17,7 @@
 
 	This file is divided into the following sections:
 
-	  =global_setting    |  Values used throughout the file 
+	  =global_setting    |  Values used throughout the file
 	  =helper_functions  |  Functions used throughout the file
 	  =behaviours        |  Implement certain functionality based on the page being viewed or a user interaction
 	----------------------------------------------------------------------------------------------------------------------- */
@@ -41,11 +41,11 @@ $(document).ready(function(){
 	function targetHighlight(target) {
 
 		// don't apply the highlight to this list of targets
-		if(target == '#content_main' ||
-		   target == '#content') { return }
+		if(target === '#content_main' ||
+		   target === '#content') { return; }
 		
 		// IE 8 and under can't animate opacity worth a damn
-		if($.browser.msie && $.browser.version < 9) { return }
+		if($.browser.msie && $.browser.version < 9) { return; }
 
 		// where is the target?
 		var target_offset = $(target).offset();
@@ -105,10 +105,10 @@ $(document).ready(function(){
 		$(".popup > a").colorbox({
 			transition: 'elastic',
 			speed: 350,
-			opacity: .85,
+			opacity: 0.85,
 			maxWidth:"80%",
 			maxHeight:"90%"
-		}); 
+		});
 	}
 
 	$("img").baselineAlign({container:'.popup'});

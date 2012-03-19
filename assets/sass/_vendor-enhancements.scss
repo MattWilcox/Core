@@ -1,0 +1,29 @@
+/*
+	=vendor_enhancements --------------------------------------------------------------------------------------------------
+	NOTE: Fix various browser issues, and switch some vendor specific nicities on/off
+	----------------------------------------------------------------------------------------------------------------------- */
+	html {
+		-webkit-text-size-adjust: 100%;
+		-ms-text-size-adjust: 100%;
+		text-rendering: optimizeLegibility; /* using kerning and ligatures http://www.aestheticallyloyal.com/public/optimize-legibility/ */ }
+
+	/* fix webkit to stop it rendering text too thickly in cases where there is light text on dark backgrounds
+	   http://orderedlist.com/our-writing/blog/articles/webkit-font-smoothing/
+	body { -webkit-font-smoothing: antialiased; } */
+
+	a:link { -webkit-tap-highlight-color : #999; }
+	
+	/* Don't collapse these into one ruleset. When a browser doesn't recognise a selector it discards the whole ruleset.
+	   By using vendor selectors in one ruleset you guarentee nothing will be applied */
+	::-webkit-selection { background-color: #999; color: #fff; }
+	::-moz-selection    { background-color: #999; color: #fff; }
+	::selection         { background-color: #999; color: #fff; }
+
+	::-webkit-input-placeholder { font-size: .875em; line-height: 1.4; }
+	input:-moz-placeholder      { font-size: .875em; line-height: 1.4; }
+	 
+	/* kill input=search default styling on webkit
+	input[type=search] { -webkit-appearance : none; }
+	input[type="search"]::-webkit-search-decoration, 
+	input[type="search"]::-webkit-search-cancel-button {
+		display: none; } */
