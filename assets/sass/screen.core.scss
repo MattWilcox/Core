@@ -40,11 +40,11 @@
 
 	----------------------------------------------------------------------------------------------------------------------- */
 
-@import "_variables";
-@import "_reset";
-@import "_vendor-enhancements";
-@import "_typography";
-@import "_base-rules";
+	@import "_variables";
+	@import "_reset";
+	@import "_vendor-enhancements";
+	@import "_typography";
+	@import "_base-rules";
 
 /*
   =display-classes ---------------------------------------------------------------------------------------------------------
@@ -80,12 +80,12 @@
 		margin-bottom : 0; }
 	#site_context .title {
 		margin : 0; }
-		 
+		
 /*
 	=website footer */
 	#content {
 		margin-top : 2em; padding-top : 1.5em; border-top : 1px solid #fff; }
-		 
+		
 /*
 	=popup */
 	.popup {
@@ -99,7 +99,7 @@
 		padding: .5em; background-color: rgba(255,255,255,.8); }
 	.popup .caption {
 		font-size: .85em; margin: .5em 0 0;	}
-		 
+		
 /*
   =layout ---------------------------------------------------------------------------------------------------------------
   NOTE:       How modules are laid out on specific pages
