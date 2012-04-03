@@ -111,8 +111,6 @@ $(document).ready(function(){
 		});
 	}
 
-	$("img").baselineAlign({container:'.popup'});
-
 /*
 	=events to run after the entire page has finished loading */
 	$(window).bind('load', function() {
