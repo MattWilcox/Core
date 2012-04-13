@@ -77,7 +77,7 @@ $(document).ready(function(){
 	=scroll internal anchors */
 	$("a[href^=#]").click(function(){
 		var target = $(this).attr('href');
-		$("html").animate({
+		$("html,body").animate({
 			scrollTop: $(target).offset().top-type_baseline
 		}, animation_speed, "swing", targetHighlight(target));
 		return false;
