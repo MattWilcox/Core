@@ -7,8 +7,8 @@
 
 /* scss:
 	font-stacks */
-	$scss_font_arvo      : ArvoRegular, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	$scss_font_helvetica : "Helvetica Neue", Helvetica, Arial, sans-serif;
+	$fontfamily_arvo      : ArvoRegular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	$fontfamily_helvetica : "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 /* scss:
 	mixins, so we can just @include header styles in other selectors later on */

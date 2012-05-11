@@ -1,0 +1,12 @@
+/* =content_adaption ----------------------------------------------------------------------------------------------------
+	 Give JS a hook to see what size screen the user has, and employ any required DOM manipulation
+	 See: http://adactio.com/journal/5429/
+	 ---------------------------------------------------------------------------------------------------------------------- */
+	body:after { display: none; content: 'breakpoint_1'; }
+	
+	@media all and (min-width: 480px) {
+		body:after { display: none; content: 'breakpoint_2'; }
+	}
+	@media all and (min-width: 700px) {
+		body:after { display: none; content: 'breakpoint_3'; }
+	}

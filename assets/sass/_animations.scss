@@ -1,0 +1,65 @@
+/*
+	=animations -----------------------------------------------------------------------------------------------------------
+	NOTE:  CSS animations
+	----------------------------------------------------------------------------------------------------------------------- */
+	
+	html.csstransforms3d #animation_clouds {
+		position: absolute; top: 74px; left: 0;
+		display: block;	width: 100%; height: 200px;
+		overflow: hidden; }
+
+	html.csstransforms3d .cloud {
+		position: absolute; top: 0; left: 0;
+		display: block; width: 186px; height: 32px;
+		background: url(../images/cloud.png) 0 0 no-repeat;
+		background-size: 186px 32px; }
+
+	html.csstransforms3d .cloud {
+		-webkit-transform : translate3d(0,0,0); -webkit-animation : cloud 60s infinite linear;
+		-moz-transform    : translate3d(0,0,0); -moz-animation    : cloud 60s infinite linear;
+		-o-transform      : translate3d(0,0,0); -o-animation      : cloud 60s infinite linear;
+		-ms-transform     : translate3d(0,0,0); -ms-animation     : cloud 60s infinite linear;
+		transform         : translate3d(0,0,0); animation         : cloud 60s infinite linear;
+	}
+	html.csstransforms3d .c2 {
+		-webkit-transform : translate3d(50px,30px,0) scale(.8); -webkit-animation-duration : 72s;
+		-moz-transform    : translate3d(50px,30px,0) scale(.8); -moz-animation-duration    : 72s;
+		-o-transform      : translate3d(50px,30px,0) scale(.8); -o-animation-duration      : 72s;
+		-ms-transform     : translate3d(50px,30px,0) scale(.8); -ms-animation-duration     : 72s;
+		transform         : translate3d(50px,30px,0) scale(.8); animation-duration         : 72s;
+	}
+	html.csstransforms3d .c3 {
+		-webkit-transform : translate3d(-100px,60px,0) scale(.6); -webkit-animation-duration : 92s;
+		-moz-transform    : translate3d(-100px,60px,0) scale(.6); -moz-animation-duration    : 92s;
+		-o-transform      : translate3d(-100px,60px,0) scale(.6); -o-animation-duration      : 92s;
+		-ms-transform     : translate3d(-100px,60px,0) scale(.6); -ms-animation-duration     : 92s;
+		transform         : translate3d(-100px,60px,0) scale(.6); animation-duration         : 92s;
+	}
+	html.csstransforms3d .c4 {
+		-webkit-transform : translate3d(-160px,70px,0) scale(.4); -webkit-animation-duration : 112s;
+		-moz-transform    : translate3d(-160px,70px,0) scale(.4); -moz-animation-duration    : 112s;
+		-o-transform      : translate3d(-160px,70px,0) scale(.4); -o-animation-duration      : 112s;
+		-ms-transform     : translate3d(-160px,70px,0) scale(.4); -ms-animation-duration     : 112s;
+		transform         : translate3d(-160px,70px,0) scale(.4); animation-duration         : 112s;
+	}
+
+	@-webkit-keyframes cloud {
+		0%   { opacity: .3; left: 120%; }
+		100% { opacity: 1; left: -120%; }
+	}
+	@-moz-keyframes cloud {
+		0%   { left: 120%;  }
+		100% { left: -120%; }
+	}
+	@-o-keyframes cloud {
+		0%   { left: 120%;  }
+		100% { left: -120%; }
+	}
+	@-ms-keyframes cloud {
+		0%   { left: 120%;  }
+		100% { left: -120%; }
+	}
+	@keyframes cloud {
+		0%   { left: 120%;  }
+		100% { left: -120%; }
+	}

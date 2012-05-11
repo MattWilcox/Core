@@ -2,8 +2,8 @@
 	NOTE: Fix various browser issues, and switch some vendor specific nicities on/off
 	----------------------------------------------------------------------------------------------------------------------- */
 	html {
-		-webkit-text-size-adjust: 100%;
-		-ms-text-size-adjust: 100%;
+		-webkit-text-size-adjust : 100%;
+		-ms-text-size-adjust     : 100%;
 		text-rendering: optimizeLegibility; /* using kerning and ligatures http://www.aestheticallyloyal.com/public/optimize-legibility/ */ }
 
 	/* fix webkit to stop it rendering text too thickly in cases where there is light text on dark backgrounds

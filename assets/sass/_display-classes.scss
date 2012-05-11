@@ -1,0 +1,13 @@
+/*
+  =display-classes ---------------------------------------------------------------------------------------------------------
+  NOTE: These are to be avoided if at all possible, it is rare they are acceptable. Do not use them for page layout!
+  ----------------------------------------------------------------------------------------------------------------------- */
+	.dc_left   { float: left; margin-right: 1em; }
+	.dc_right  { float: right; margin-left: 1em; }
+
+	.dc_small  { width: 20%; }
+	.dc_medium { width: 40%; }
+	.dc_large  { width: 60%; }
+
+	.dc_hide_text    { @include hide-text; }
+	.dc_hide_element { @include hide-element; }
