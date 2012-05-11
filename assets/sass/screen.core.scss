@@ -56,7 +56,9 @@
 	.dc_small  { width: 20%; }
 	.dc_medium { width: 40%; }
 	.dc_large  { width: 60%; }
-	.hide-text { text-indent: 100%; white-space: nowrap; overflow: hidden; }
+
+	.dc_hide_text { text-indent: 105%; white-space: nowrap; overflow: hidden; }
+	.dc_hide_element { position: absolute; left: -999em; overflow: hidden; }
 
 /*
   =modules --------------------------------------------------------------------------------------------------------------
@@ -70,7 +72,7 @@
 
 /* let's also enable us to find our specific font measures */
 	.font-measure {
-		outline: 1px solid red;}
+		outline: 1px solid red; }
 	.anatomy { /* use this to find where the baseline sits so we can use it for our type math later */
 		font-size: 100px; margin: 0; line-height: 1; }
 	
