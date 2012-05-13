@@ -44,9 +44,15 @@
 		<iframe src="<?php echo $url ?>" width="959" height="1024"></iframe>
 	</div>
 
-	<div class="breakpoint_3">
-		<h2>Breakpoint 5 (960 and up)</h2>
+	<div class="breakpoint_5">
+		<h2>Breakpoint 5 (960 to 1279)</h2>
 		<iframe src="<?php echo $url ?>" width="960" height="1024"></iframe>
+		<iframe src="<?php echo $url ?>" width="1279" height="1024"></iframe>
+	</div>
+
+	<div class="breakpoint_6">
+		<h2>Breakpoint 6 (1280 and up)</h2>
+		<iframe src="<?php echo $url ?>" width="1280" height="1024"></iframe>
 	</div>
 </body>
 </html>
