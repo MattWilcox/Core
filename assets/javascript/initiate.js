@@ -7,7 +7,7 @@
 	
 	--------------------------------------------------------------------------------------------------------------------------
 	FILE INFO
-	Last updated:     2012/01/19
+	Last updated:     2012/05/31
 	Last updated by:  Matt Wilcox
 	
 	--------------------------------------------------------------------------------------------------------------------------
@@ -46,11 +46,15 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
 	----------------------------------------------------------------------------------------------------------------------- */
 
 $(document).ready(function(){
-/*
-	=TEST: if we want a colourbox images on our site */
+	/* TEST: if we want a popup on the page */
 	if($(".popup > a").length > 0) {
 		$.requireJs('/assets/javascript/plugins/colorbox/jquery.colorbox-min.js');
 		$.requireCss('/assets/javascript/plugins/colorbox/colorbox.css');
+	}
+
+	/* =TEST: if there are images on the page */
+	if($("img").length > 0) {
+		$.requireJs('/assets/javascript/plugins/jquery.baselinealign-1.0.1-min.js');
 	}
 
 	// we always want to load progressive enhancements at the end of the load queue

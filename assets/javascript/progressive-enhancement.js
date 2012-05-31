@@ -6,12 +6,12 @@
 	In no case should JavaScript be required for the website to work. In no case should any JavaScript be in-line
 	or embeded in HTML.
 	
-	--------------------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------------
 	FILE INFO
 	Last updated:     2012/01/19
 	Last updated by:  Matt Wilcox
 
-	--------------------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------------
 	STYLEGUIDE
 	Indentation uses tabs [why: http://lea.verou.me/2012/01/why-tabs-are-clearly-superior/]
 
@@ -24,16 +24,14 @@
 
 $(document).ready(function(){
 
-/*
-	=global settings ---------------------------------------------------------------------------------------------------------
+/* =global settings -----------------------------------------------------------------------------------------------------
 	NOTE: Values used throughout the file
 	----------------------------------------------------------------------------------------------------------------------- */
 
 	var animation_speed = 500;
 	var type_baseline   = parseFloat($("html").css("line-height").replace("px",""));
 
-/*
-	=helper functions --------------------------------------------------------------------------------------------------------
+/* =helper functions ----------------------------------------------------------------------------------------------------
 	NOTE: Functions used throughout the file
 	----------------------------------------------------------------------------------------------------------------------- */
 
@@ -68,13 +66,11 @@ $(document).ready(function(){
 		               });
 	} // function targetHighlight(target)
 
-/*
-	=behaviours --------------------------------------------------------------------------------------------------------------
+/* =behaviours ----------------------------------------------------------------------------------------------------------
 	NOTE: Implement certain functionality based on the page being viewed or a user interaction
 	----------------------------------------------------------------------------------------------------------------------- */
 
-/*
-	=scroll internal anchors */
+/* =scroll internal anchors */
 	$("a[href^=#]").click(function(){
 		var target = $(this).attr('href');
 		$("html,body").animate({
@@ -83,24 +79,21 @@ $(document).ready(function(){
 		return false;
 	});
 	
-/*
-	=keyboard focus on labels */
+/* =keyboard focus on labels */
 	$("input,select,textarea").focus(function(){
 		$(this).parent().addClass('focus');
 	}).blur(function(){
 		$(this).parent().removeClass('focus');
 	});
 
-/*
-	=keyboard accessible drop-nav */
+/* =keyboard accessible drop-nav */
 	$("li > a").focus(function(){
 		$(this).parents('ul').addClass('focus');
 	}).blur(function(){
 		$(this).parents('ul').removeClass('focus');
 	});
 
-/*
-	=colorbox */
+/* =colorbox */
 	if($(".popup > a").length > 0) {
 		$(".popup > a").colorbox({
 			transition: 'elastic',
@@ -111,10 +104,11 @@ $(document).ready(function(){
 		});
 	}
 
-/*
-	=events to run after the entire page has finished loading */
+/* =events to run after the entire page has finished loading */
 	$(window).bind('load', function() {
 		$("body").addClass("load-complete");
+
+		$("img").baselineAlign({container:'.popup'});
 	});
 	
 }); // $(document).ready

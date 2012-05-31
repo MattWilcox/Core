@@ -58,16 +58,21 @@
 	html {
 		background-image : url(../images/_baseline-22.png); }
 
+/* =lists */
+	.container {
+		ul, ol {
+			margin-left: 1.6em;
+		}
+	}
+
 /* =website header */
-	#site_context  {
+	#site_context {
 		margin-bottom : 0; }
 	#site_context .title {
 		margin : 0; }
 		
 /* =website footer */
-	#content {
-		margin-top : 2em; padding-top : 1.5em; border-top : 1px solid #fff; }
-		
+	
 /* =popup */
 	.popup {
 		margin-bottom : 1.375em;
