@@ -3,10 +3,7 @@
 	 See: http://adactio.com/journal/5429/
 	 ---------------------------------------------------------------------------------------------------------------------- */
 	body:after { display: none; content: 'breakpoint_1'; }
-	
-	@media all and (min-width: 480px) {
-		body:after { display: none; content: 'breakpoint_2'; }
-	}
-	@media all and (min-width: 700px) {
-		body:after { display: none; content: 'breakpoint_3'; }
-	}
+	@media all and (min-width: 480px)  { body:after { display: none; content: 'breakpoint_2'; } }
+	@media all and (min-width: 700px)  { body:after { display: none; content: 'breakpoint_3'; } }
+	@media all and (min-width: 960px)  { body:after { display: none; content: 'breakpoint_4'; } }
+	@media all and (min-width: 1280px) { body:after { display: none; content: 'breakpoint_5'; } }

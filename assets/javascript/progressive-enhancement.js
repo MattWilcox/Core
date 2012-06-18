@@ -28,8 +28,10 @@ $(document).ready(function(){
 	NOTE: Values used throughout the file
 	----------------------------------------------------------------------------------------------------------------------- */
 
-	var animation_speed = 500;
-	var type_baseline   = parseFloat($("html").css("line-height").replace("px",""));
+	var animation_speed   = 500;
+	var type_baseline     = parseFloat($("html").css("line-height").replace("px",""));
+	var currentBreakpoint; // default's to blank so it's always analysed on first load
+	var didResize         = true; // default's to true so it's always analysed on first load
 
 /* =helper functions ----------------------------------------------------------------------------------------------------
 	NOTE: Functions used throughout the file
@@ -78,7 +80,7 @@ $(document).ready(function(){
 		}, animation_speed, "swing", targetHighlight(target));
 		return false;
 	});
-	
+
 /* =keyboard focus on labels */
 	$("input,select,textarea").focus(function(){
 		$(this).parent().addClass('focus');
@@ -110,5 +112,70 @@ $(document).ready(function(){
 
 		$("img").baselineAlign({container:'.popup'});
 	});
-	
+
+/* =content_adaption ----------------------------------------------------------------------------------------------------
+	NOTE: Alter behaviour of the page based on the design breakpoint that's currently active
+	----------------------------------------------------------------------------------------------------------------------- */
+
+	if($("body").hasClass('home')){
+		/* Conditional Content based on browser size. See http://adactio.com/journal/5429/ for the basic principle */
+
+		// Grab un-manipulated versions of stuff we're gonna play with on this page
+		// var raw_section = $(".section").html();
+
+		// Function to reset the page when breakpoints change
+		var clean_html = function(){
+			// revert the page back to the "raw" HTML & destroy any JS fancy-pants from other breakpoints
+			//$(".section").remove();
+			//$(".section_parent").append("<div class='section'></div>");
+			//$(".section").html(raw_section);
+		};
+
+		// Watch for resizes
+		$(window).resize(function() {
+			didResize = true;
+		});
+
+		/* every 1/4 second, check if the browser was resized */
+		setInterval(function() {
+			if (didResize) {
+				didResize         = false;
+				var newBreakpoint = null;
+				try { // modern browsers
+					newBreakpoint = window.getComputedStyle(document.body, ':after').getPropertyValue('content');
+				}
+				catch(err) { // for browsers that don't do Media Queries, default to highest res
+					newBreakpoint = "breakpoint_5";
+				}
+
+				/* tidy up after inconsistent browsers (some include quotation marks, they shouldn't) */
+				newBreakpoint = newBreakpoint.replace(/"/g, "");
+				newBreakpoint = newBreakpoint.replace(/'/g, "");
+
+				// actually do stuff now we know the size changed
+				if (currentBreakpoint !== newBreakpoint) {
+					if (newBreakpoint === 'breakpoint_1') {
+						clean_html(); // remove manipulations from previous breakpoints
+						currentBreakpoint = 'breakpoint_1'; // set the new breakpoint as the current one
+					}
+					if (newBreakpoint === 'breakpoint_2') {
+						clean_html(); // remove manipulations from previous breakpoints
+						currentBreakpoint = 'breakpoint_2'; // set the new breakpoint as the current one
+					}
+					if (newBreakpoint === 'breakpoint_3') {
+						clean_html(); // remove manipulations from previous breakpoints
+						currentBreakpoint = 'breakpoint_3'; // set the new breakpoint as the current one
+					}
+					if (newBreakpoint === 'breakpoint_4') {
+						clean_html(); // remove manipulations from previous breakpoints
+						currentBreakpoint = 'breakpoint_4'; // set the new breakpoint as the current one
+					}
+					if (newBreakpoint === 'breakpoint_5') {
+						clean_html(); // remove manipulations from previous breakpoints
+						currentBreakpoint = 'breakpoint_5'; // set the new breakpoint as the current one
+					}
+				}
+			}
+		}, 250);
+	} // body.home
 }); // $(document).ready
