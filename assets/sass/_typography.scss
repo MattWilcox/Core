@@ -47,8 +47,8 @@
 		font: 100%/1.375 "Helvetica Neue", Helvetica, Arial, sans-serif; }
 		 
 	h1, h2, h3, h4, h5, h6 {
-		/* em fallback */ margin-top: 1.375em; margin-bottom : 1.375em;
-		margin-top: 1.375rem; margin-bottom : 1.375rem;
+		/* em fallback */ margin-top: 0; margin-bottom : 1.375em;
+		margin-top: 0; margin-bottom : 1.375rem;
 		font-family: ArvoRegular, "Helvetica Neue", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: normal;
 		/* http://blogs.msdn.com/b/ie/archive/2012/01/09/css-corner-using-the-whole-font.aspx */
 		-moz-font-feature-settings    : "liga=1, dlig=1";
