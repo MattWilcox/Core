@@ -1,20 +1,6 @@
-@mixin hide-text {
-	text-indent: 105%; white-space: nowrap; overflow: hidden;
-}
-@mixin hide-element {
-	position: absolute; left: -999em; overflow: hidden;
-}
 @mixin color-rgba($color,$opacity) {
 	color: $color; color: rgba($color,$opacity);
 }
 @mixin bgcolor-rgba($color,$opacity) {
 	background-color: $color; background-color: rgba($color,$opacity);
-}
-@mixin clearfix {
-	&:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
-	zoom: 1;
 }

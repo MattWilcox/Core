@@ -12,17 +12,17 @@
 
 /* scss:
 	mixins, so we can just @include header styles in other selectors later on */
-	@mixin h1 {
+	.h1 {
 		/* em fallback */ font-size: 2em;
 		font-size: 2rem; line-height: 1.375;
 	}
 
-	@mixin h2 {
+	.h2 {
 		/* em fallback */ font-size: 1.75em;
 		font-size: 1.75rem; line-height: 1.5714285714;
 	}
 
-	@mixin h3 {
+	.h3 {
 		/* em fallback */ font-size: 1.375em;
 		font-size: 1.375rem; line-height : 1;
 	}
@@ -32,7 +32,7 @@
 	 * @vendor:     Anton Koovit
 	 * @vendorurl:  http://anton.korkork.com/
 	 * @licenseurl: http://www.fontsquirrel.com/license/arvo */
-	 
+	
 	@font-face {
 		font-family: 'ArvoRegular';
 		src: url('../fonts/Arvo-Regular-webfont.eot');
@@ -47,8 +47,8 @@
 		font: 100%/1.375 "Helvetica Neue", Helvetica, Arial, sans-serif; }
 		 
 	h1, h2, h3, h4, h5, h6 {
-		/* em fallback */ margin-top: 0; margin-bottom : 1.375em;
-		margin-top: 0; margin-bottom : 1.375rem;
+		/* em fallback */ margin-top: 1.375em; margin-bottom : 1.375em;
+		margin-top: 1.375rem; margin-bottom : 1.375rem;
 		font-family: ArvoRegular, "Helvetica Neue", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: normal;
 		/* http://blogs.msdn.com/b/ie/archive/2012/01/09/css-corner-using-the-whole-font.aspx */
 		-moz-font-feature-settings    : "liga=1, dlig=1";
@@ -57,9 +57,9 @@
 		-o-font-feature-settings      : "liga", "dlig";
 		font-feature-settings         : "liga", "dlig"; }
 	
-	h1 { @include h1; }
-	h2 { @include h2; }
-	h3, h4, h5, h6 { @include h3; }
+	h1 { @extend .h1; }
+	h2 { @extend .h2; }
+	h3, h4, h5, h6 { @extend .h3; }
 	p, ul, blockquote { 
 		/* em fallback */ margin-bottom: 1.375em;
 		margin-bottom: 1.375rem; }

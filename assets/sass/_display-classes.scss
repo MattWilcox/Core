@@ -8,5 +8,17 @@
 	.dc_medium { width: 40%; }
 	.dc_large  { width: 60%; }
 
-	.dc_hide_text    { @include hide-text; }
-	.dc_hide_element { @include hide-element; }
+	.dc_hide-text {
+		text-indent: 105%; white-space: nowrap; overflow: hidden;
+	}
+	.dc_hide-element {
+		position: absolute; left: -999em; overflow: hidden;
+	}
+	.dc_clearfix {
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		zoom: 1;
+	}

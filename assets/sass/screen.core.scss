@@ -1,6 +1,6 @@
 /*
 	SCREEN.CSS
-	This is where styles for on-screen media are declaired.
+	This is where styles for on-screen media are declared.
 	This style sheet establishes the core styles used for all resolutions before declaring the baseline 320px mobile layout.
 	
 	--------------------------------------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@
 		=global_reset         |  Brings all browsers into line 
 		=vendor_enhancements  |  Fix various issues and/or enable enhancements
 		=typography           |  How type looks and behaves
-		=base_rules           |  Styling of raw elments
+		=base_rules           |  Styling of raw elements
 		=display_classes      |  Should very rarely be used, and never for page layout!
 		=modules              |  Discrete components of a page [sub-divided]
 		=layout               |  How modules are laid out on given pages [sub-divided]
@@ -42,7 +42,6 @@
 
 	@import "_variables";
 	@import "_mixins";
-
 	@import "_reset";
 	@import "_vendor-enhancements";
 	@import "_typography";
