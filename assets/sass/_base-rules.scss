@@ -42,11 +42,7 @@
 
 /* =a */
 	a {
-		-webkit-transition : box-shadow linear 0.2s, background-color linear 0.2s;
-		-moz-transition    : box-shadow linear 0.2s, background-color linear 0.2s;
-		-o-transition      : box-shadow linear 0.2s, background-color linear 0.2s;
-		-ms-transition     : box-shadow linear 0.2s, background-color linear 0.2s;
-		transition         : box-shadow linear 0.2s, background-color linear 0.2s; }
+		@include transition (box-shadow linear 0.2s, background-color linear 0.2s); }
 	a:link,
 	a:visited { color: #66b; text-decoration: none; }
 	a:hover   { text-decoration : underline; }

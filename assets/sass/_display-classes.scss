@@ -22,3 +22,13 @@
 		}
 		zoom: 1;
 	}
+
+	.dc_horizontal-list {
+		margin: 0;
+		list-style-type: none;
+
+		li {
+			float: left;
+			margin: 0;
+		}
+	}

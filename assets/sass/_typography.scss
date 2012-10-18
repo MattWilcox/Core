@@ -44,12 +44,12 @@
 	}
 
 	html,	input, select, textarea { /* font-size: 16px, line-height: 22px */
-		font: 100%/1.375 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+		font: 100%/1.375 $fontfamily_helvetica; }
 		 
 	h1, h2, h3, h4, h5, h6 {
 		/* em fallback */ margin-top: 1.375em; margin-bottom : 1.375em;
 		margin-top: 1.375rem; margin-bottom : 1.375rem;
-		font-family: ArvoRegular, "Helvetica Neue", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: normal;
+		font-family: $fontfamily_arvo; text-transform: uppercase; font-weight: normal;
 		/* http://blogs.msdn.com/b/ie/archive/2012/01/09/css-corner-using-the-whole-font.aspx */
 		-moz-font-feature-settings    : "liga=1, dlig=1";
 		-ms-font-feature-settings     : "liga", "dlig";
