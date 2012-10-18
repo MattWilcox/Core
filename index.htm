@@ -27,14 +27,12 @@
 	<link rel="stylesheet" media="screen" href="/assets/css/screen.core.css" />
 	<link rel="stylesheet" media="print"  href="/assets/css/print.css" />
 
-	<!-- Styling for progressively larger displays
-	     NOTE:      breakpoints are decided based on the design, not device
-	     REFERENCE: http://mattwilcox.net/archive/entry/id/1075/ -->
-	<link rel="stylesheet" media="only screen and (min-width: 480px)"  href="/assets/css/screen.480.css" />
-
 	<!-- Deal with IE < 9 which can't do media queries. Given up on respond.js, it's too unreliable and causes crashes -->
-	<!--[if lt IE 9 & (!IEMobile)]>
-		<link rel="stylesheet" href="/assets/css/screen.480.css" />
+	<!--[if IE 7 & (!IEMobile)]>
+		<link rel="stylesheet" href="/assets/css/screen.ie7.css" />
+	<![endif]-->
+	<!--[if IE 7 & (!IEMobile)]>
+		<link rel="stylesheet" href="/assets/css/screen.ie8.css" />
 	<![endif]-->
 
 	<!-- Favicon for Retina iThings -->
