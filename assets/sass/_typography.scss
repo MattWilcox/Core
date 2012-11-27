@@ -44,13 +44,21 @@
 	}
 
 	html,	input, select, textarea { /* font-size: 16px, line-height: 22px */
-		font: 100%/1.375 $fontfamily_helvetica; }
+		font: 100%/1.375 $fontfamily_helvetica;
+		/* hyphenations now work! http://www.quirksmode.org/blog/archives/2012/11/hyphenation_wor.html */
+		hyphens: auto;
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		-ms-hyphens: auto;
+		-o-hyphens: auto;
+	}
 		 
 	h1, h2, h3, h4, h5, h6 {
 		/* em fallback */ margin-top: 1.375em; margin-bottom : 1.375em;
 		margin-top: 1.375rem; margin-bottom : 1.375rem;
 		font-family: $fontfamily_arvo; text-transform: uppercase; font-weight: normal;
-		/* http://blogs.msdn.com/b/ie/archive/2012/01/09/css-corner-using-the-whole-font.aspx */
+
+		/* Get fancy font features working: http://blogs.msdn.com/b/ie/archive/2012/01/09/css-corner-using-the-whole-font.aspx */
 		-moz-font-feature-settings    : "liga=1, dlig=1";
 		-ms-font-feature-settings     : "liga", "dlig";
 		-webkit-font-feature-settings : "liga", "dlig";
