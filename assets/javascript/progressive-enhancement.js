@@ -8,7 +8,7 @@
 	
 	-----------------------------------------------------------------------------------------------------------------------
 	FILE INFO
-	Last updated:     2012/01/19
+	Last updated:     2012/12/18
 	Last updated by:  Matt Wilcox
 
 	-----------------------------------------------------------------------------------------------------------------------
@@ -22,6 +22,151 @@
 	  =behaviours        |  Implement certain functionality based on the page being viewed or a user interaction
 	----------------------------------------------------------------------------------------------------------------------- */
 
+
+/* =respond ----------------------------------------------------------------------------------------------------------------
+	NOTE: An object that is used to manage which JavaScript applicable to different viewport widths
+	----------------------------------------------------------------------------------------------------------------------- */
+	var respond = {
+		cleanup_events:[],
+		current_breakpoint:'',
+
+		setup:function(){
+			//find initial breakpoint and run corresponding javascript function
+			respond.calculate_breakpoint();
+		},
+
+		calculate_breakpoint:function(){
+			var new_breakpoint = null;
+			try { // modern browsers
+				new_breakpoint = window.getComputedStyle(document.body, ':after').getPropertyValue('content');
+			}
+			catch(err) { // for browsers that don't do Media Queries, default to highest res
+				new_breakpoint = "breakpoint_5";
+			}
+			
+			/* tidy up after inconsistent browsers (some include quotation marks, they shouldn't) */
+			new_breakpoint = new_breakpoint.replace(/"/g, "");
+			new_breakpoint = new_breakpoint.replace(/'/g, "");
+
+			/* is this breakpoint different from the last one? */
+			if(new_breakpoint !== respond.current_breakpoint){
+				respond.current_breakpoint = new_breakpoint;
+				
+				//reset elements on page
+				respond.reset_js();
+
+				switch(new_breakpoint){
+					case 'breakpoint_5':
+						respond.screen_5();
+						break;
+					case 'breakpoint_4':
+						respond.screen_4();
+						break;
+					case 'breakpoint_3':
+						respond.screen_3();
+						break;
+					case 'breakpoint_2':
+						respond.screen_2();
+						break;
+					case 'breakpoint_1':
+						respond.screen_1();
+						break;
+					default:
+						break;
+				}
+			}
+		},
+
+		reset_js:function(){
+			for(var i=0; i<respond.cleanup_events.length;i++){
+				respond.cleanup_events[i]();
+			}
+			respond.cleanup_events=[];
+		},
+
+		screen_5:function(){
+			respond.setup_hiding_nav();
+			respond.setup_cjt_twitter();
+		},
+
+		screen_4:function(){
+			respond.setup_hiding_nav();
+			respond.setup_cjt_twitter();
+		},
+
+		screen_3:function(){
+			respond.setup_mobile_nav();
+		},
+
+		screen_2:function(){
+			respond.setup_mobile_nav();
+		},
+
+		screen_1:function(){
+		},
+
+		setup_mobile_nav:function(){
+			//hide top nav
+			$('html').addClass('mobile-nav');
+
+			// add the navigation toggle if it's not there already
+			if($('.nav-menu-trigger').length === 0) {
+				$('#container').prepend('<a class=\'nav-menu-trigger\'>navigation menu</a>');
+			}
+
+			$('.nav-menu-trigger').click(function() {
+				if($("html").hasClass('nav-active')){
+					$("html").removeClass('nav-active');
+					$('.nav-menu-trigger').html('navigation menu');
+				}
+				else {
+					$('html').addClass('nav-active');
+					$('.nav-menu-trigger').html('back to content');
+				}
+			});
+
+			// add the teardown function to the cleanup array
+			respond.cleanup_events.push(respond.teardown_mobile_nav);
+		},
+		teardown_mobile_nav:function(){
+			$('html').removeClass('mobile-nav');
+			$('html').removeClass('nav-active');
+
+			if($('.nav-menu-trigger').length > 0) {
+				$('.nav-menu-trigger').remove();
+			}
+		},
+
+		setup_hiding_nav:function(){
+			$("html").addClass("group_nav_hide");
+
+			$(".link_family a").click(function(event){
+				event.preventDefault();
+
+				if($("html").hasClass("group_nav_hide")){
+					$("html").removeClass("group_nav_hide");
+				} else {
+					$("html").addClass("group_nav_hide");
+				}
+			});
+		},
+		teardown_hiding_nav:function(){
+			$("html").removeClass("group_nav_hide");
+		},
+
+		setup_cjt_twitter:function() {
+			var twitter_code = '<div class="twitter_crutch"><h3>Latest Tweets</h3><a class="twitter-timeline" data-dnt=true href="https://twitter.com/CJ_Timber" data-widget-id="280673489244004353">Tweets by @CJ_Timber</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>';
+			$(".site_footer .band_1 .content").append(twitter_code);
+
+			// add the teardown function to the cleanup array
+			respond.cleanup_events.push(respond.teardown_cjt_twitter);
+		},
+		teardown_cjt_twitter:function(){
+			$(".twitter_crutch, iframe").remove();
+			$("body").attr("data-twttr-rendered","");
+		}
+	};
+
 $(document).ready(function(){
 
 /* =global settings -----------------------------------------------------------------------------------------------------
@@ -30,14 +175,12 @@ $(document).ready(function(){
 
 	var animation_speed   = 500;
 	var type_baseline     = parseFloat($("html").css("line-height").replace("px",""));
-	var currentBreakpoint; // default's to blank so it's always analysed on first load
-	var didResize         = true; // default's to true so it's always analysed on first load
 
 /* =helper functions ----------------------------------------------------------------------------------------------------
 	NOTE: Functions used throughout the file
 	----------------------------------------------------------------------------------------------------------------------- */
 
-/* Highlight a given element using an animated graphic overlay */
+/* highlight a given element using an animated graphic overlay */
 	function targetHighlight(target) {
 
 		// don't apply the highlight to this list of targets
@@ -106,76 +249,31 @@ $(document).ready(function(){
 		});
 	}
 
-/* =events to run after the entire page has finished loading */
+/* =load-complete */
 	$(window).bind('load', function() {
 		$("body").addClass("load-complete");
-
-		$("img").baselineAlign({container:'.popup'});
 	});
 
 /* =content_adaption ----------------------------------------------------------------------------------------------------
 	NOTE: Alter behaviour of the page based on the design breakpoint that's currently active
 	----------------------------------------------------------------------------------------------------------------------- */
 
-	if($("body").hasClass('home')){
-		/* Conditional Content based on browser size. See http://adactio.com/journal/5429/ for the basic principle */
+	// Watch for resizes
+	$(window).resize(function() {
+		//didResize = true;
+		delay(function(){
+			respond.calculate_breakpoint();
+		}, 500);
+	});
 
-		// Grab un-manipulated versions of stuff we're gonna play with on this page
-		// var raw_section = $(".section").html();
-
-		// Function to reset the page when breakpoints change
-		var clean_html = function(){
-			// revert the page back to the "raw" HTML & destroy any JS fancy-pants from other breakpoints
-			//$(".section").remove();
-			//$(".section_parent").append("<div class='section'></div>");
-			//$(".section").html(raw_section);
+	var delay = (function(){
+		var timer = 0;
+		return function(callback, ms){
+			clearTimeout (timer);
+			timer = setTimeout(callback, ms);
 		};
+	})();
 
-		// Watch for resizes
-		$(window).resize(function() {
-			didResize = true;
-		});
+	respond.setup(); // always run at least once
 
-		/* every 1/4 second, check if the browser was resized */
-		setInterval(function() {
-			if (didResize) {
-				didResize         = false;
-				var newBreakpoint = null;
-				try { // modern browsers
-					newBreakpoint = window.getComputedStyle(document.body, ':after').getPropertyValue('content');
-				}
-				catch(err) { // for browsers that don't do Media Queries, default to highest res
-					newBreakpoint = "breakpoint_5";
-				}
-
-				/* tidy up after inconsistent browsers (some include quotation marks, they shouldn't) */
-				newBreakpoint = newBreakpoint.replace(/"/g, "");
-				newBreakpoint = newBreakpoint.replace(/'/g, "");
-
-				// actually do stuff now we know the size changed
-				if (currentBreakpoint !== newBreakpoint) {
-					if (newBreakpoint === 'breakpoint_1') {
-						clean_html(); // remove manipulations from previous breakpoints
-						currentBreakpoint = 'breakpoint_1'; // set the new breakpoint as the current one
-					}
-					if (newBreakpoint === 'breakpoint_2') {
-						clean_html(); // remove manipulations from previous breakpoints
-						currentBreakpoint = 'breakpoint_2'; // set the new breakpoint as the current one
-					}
-					if (newBreakpoint === 'breakpoint_3') {
-						clean_html(); // remove manipulations from previous breakpoints
-						currentBreakpoint = 'breakpoint_3'; // set the new breakpoint as the current one
-					}
-					if (newBreakpoint === 'breakpoint_4') {
-						clean_html(); // remove manipulations from previous breakpoints
-						currentBreakpoint = 'breakpoint_4'; // set the new breakpoint as the current one
-					}
-					if (newBreakpoint === 'breakpoint_5') {
-						clean_html(); // remove manipulations from previous breakpoints
-						currentBreakpoint = 'breakpoint_5'; // set the new breakpoint as the current one
-					}
-				}
-			}
-		}, 250);
-	} // body.home
 }); // $(document).ready
