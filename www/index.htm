@@ -28,27 +28,19 @@
 	<link rel="stylesheet" media="print"  href="/assets/css/print.css" />
 
 	<!-- Deal with IE < 9 which can't do media queries. Given up on respond.js, it's too unreliable and causes crashes -->
-	<!--[if IE 7 & (!IEMobile)]>
-		<link rel="stylesheet" href="/assets/css/screen.ie7.css" />
-	<![endif]-->
-	<!--[if IE 7 & (!IEMobile)]>
+	<!--[if IE 8 & (!IEMobile)]>
 		<link rel="stylesheet" href="/assets/css/screen.ie8.css" />
 	<![endif]-->
 
-	<!-- Favicon for Retina iThings -->
-	<link rel="apple-touch-icon-precomposed"
-	      sizes="114x114"
-	      href="/assets/images/apple-touch-icon.png" />
-	<!-- Favicon for old iThings and Android -->
-	<link rel="apple-touch-icon-precomposed"
-	      href="/assets/images/apple-touch-icon.png" />
-	<!-- Favicon for Nokia -->
-	<link rel="shortcut icon"
-	      href="/assets/images/apple-touch-icon.png" />
+	<!-- Favicons [ See: http://www.jonathantneal.com/blog/understand-the-favicon/ ]
+	     TL;DR: put a 32x32 favicon.ico file in root for IE, everything else uses the PNGs declared here -->
+	<!-- Favicon for Apple -->
+	<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+	<!-- Win8 tiles -->
+	<meta name="msapplication-TileColor" content="#000" />
+	<meta name="msapplication-TileImage" content="/assets/images/ms-tileicon.png" />
 	<!-- Favicon for everything else -->
-	<link rel="shortcut icon"
-	      href="/favicon.ico"
-	      type="image/x-icon" />
+	<link rel="icon" href="/assets/images/favicon.png" />
 
 	<!-- The Adaptive-Images JavaScript
 	     NOTE:      Used to automatically provide re-scaled images appropriate to the visitors device
