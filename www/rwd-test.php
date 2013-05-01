@@ -1,4 +1,12 @@
 <?php
+	/*
+		Adjust the breakpoints here to fit the design. Breakpoints are based on design and not device, this page
+		is only here to make it a bit faster than having to manually resize your window while checking major 
+		breakpoints during building.
+
+		USE: http://yourdomain.com/rwd-test.php?url=http://pagetotest
+	*/
+
 	$url = htmlentities($_GET['url'],ENT_QUOTES,"UTF-8");
 ?><!DOCTYPE html>
 <html lang=en>

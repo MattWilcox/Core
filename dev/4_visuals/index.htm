@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" class="home">
+	<head>
+		<!-- meta information -->
+		<meta charset="utf-8" />
+		<meta name="robots"
+		      content="noindex,nofollow" />
+		<meta name="country"
+		      content="UK" />
+		<meta name="language"
+		      content="en-GB" />
+		      
+		<style>
+			* {
+				-webkit-box-sizing : border-box;
+				-moz-box-sizing    : border-box;
+				-o-box-sizing      : border-box;
+				-ms-box-sizing     : border-box;
+				box-sizing         : border-box;
+
+				margin: 0; padding: 0;
+			}
+
+			body {
+				padding: 2.75em;
+				background: #dedede url(assets/bg_texture-light.png); color: #555;
+				font: 100%/1.375 "Helvetica Neue", Helvetica, Arial, sans-serif;
+			}
+
+			a, img {
+				display: block;
+			}
+
+			img {
+				max-width: 100%;
+			}
+
+			.intro {
+				margin-bottom: 2.75em;
+			}
+
+			.note {
+				max-width: 400px; margin-bottom: 1.375em;
+				text-align: left; font-size: 0.85em; color: #999;
+				text-shadow: -1px 0 1px rgba(255,255,255,.8), 1px 0 0px rgba(0,0,0,.1);
+			}
+
+			.page-type {
+				padding: 1.375em 1.375em 0; margin-bottom: 2.75em; border-radius: 1em; max-width: 1200px;
+				background: #efefef url(assets/bg_texture-light.png);
+				overflow: hidden;
+			}
+
+			.page-type:last-child {
+				margin-bottom: 0;
+			}
+
+			.version a {
+				float: left;
+				width: 24.25%; margin-left: 1%; margin-bottom: 1.375em; border-radius: .6875em; padding: 1.375em;
+				background-color: #fff; color: #666; text-align: center; text-decoration: none;
+				-webkit-transition : all 0.2s;
+				-moz-transition    : all 0.2s;
+				-ms-transition     : all 0.2s;
+				-o-transition      : all 0.2s;
+				transition         : all 0.2s;
+
+				-webkit-transform-origin : 50% 50%;
+				-moz-transform-origin    : 50% 50%;
+				-ms-transform-origin     : 50% 50%;
+				-o-transform-origin      : 50% 50%;
+				transform-origin         : 50% 50%;
+			}
+
+			.version a:hover,
+			.version a:focus {
+				-webkit-transform : translate3d(0,-.171875em,0);
+				-moz-transform    : translate3d(0,-.171875em,0);
+				-ms-transform     : translate3d(0,-.171875em,0);
+				-o-transform      : translate3d(0,-.171875em,0);
+				transform         : translate3d(0,-.171875em,0);
+				box-shadow: 0 0 10px rgba(0,0,0,.125);
+			}
+
+			.version:nth-child(4n-1) a {
+				margin-left: 0;
+			}
+
+			.version a img {
+				margin-top: .6875em;
+			}
+
+			.url,
+			h1 + p {
+				margin-bottom: 1.375em;
+				font-style: italic;
+			}
+
+			.url {
+				color: #999; text-shadow: -1px 0 1px rgba(255,255,255,.8), 1px 0 0px rgba(0,0,0,.1); font-size: 0.85em; font-style: normal;
+			}
+
+			.credit {
+				padding: 5.5em 0;
+				-webkit-animation : load_in .6s ease 2s 1 both;
+				-moz-animation    : load_in .6s ease 2s 1 both;
+				-o-animation      : load_in .6s ease 2s 1 both;
+				animation         : load_in .6s ease 2s 1 both;
+			}
+
+			/* sign-off */
+			.page-type.signed-off > div {
+				opacity: .4;
+
+				-webkit-filter : grayscale(100%);
+				-moz-filter    : grayscale(100%);
+				filter         : grayscale(100%);
+
+				-moz-transition    : all .3s;
+				-webkit-transition : all .3s;
+				transition         : all .3s;
+			}
+
+			.page-type.signed-off > div:hover,
+			.page-type.signed-off > div.signed-off {
+				opacity: 1;
+
+				-webkit-filter : grayscale(0);
+				-moz-filter    : grayscale(0);
+				filter         : grayscale(0);
+			}
+
+			.page-type.signed-off > div.signed-off > a {
+				position: relative; overflow: hidden;
+			}
+			.page-type.signed-off > div.signed-off > a:after {
+				content: "signed-off";
+				position: absolute; top: 0; left: 0;
+
+				padding: 3px 2em 5px;
+				background-color: green; color: white;
+				
+				-moz-transform    : translate3d(-2em,1.4em,0) rotate(-45deg);
+				-webkit-transform : translate3d(-2em,1.4em,0) rotate(-45deg);
+				transform         : translate3d(-2em,1.4em,0) rotate(-45deg);
+
+				-moz-transition    : opacity .3s;
+				-webkit-transition : opacity .3s;
+				transition         : opacity .3s;
+			}
+			.page-type.signed-off > div.signed-off > a:hover:after {
+				opacity: 0;
+			}
+
+			/* animation */
+			.intro {
+				-webkit-animation : load_left .6s ease 0 1 both;
+				-moz-animation    : load_left .6s ease 0 1 both;
+				-o-animation      : load_left .6s ease 0 1 both;
+				animation         : load_left .6s ease 0 1 both;
+			}
+			.homepage {
+				-webkit-animation : load_left .6s ease .2s 1 both;
+				-moz-animation    : load_left .6s ease .2s 1 both;
+				-o-animation      : load_left .6s ease .2s 1 both;
+				animation         : load_left .6s ease .2s 1 both;
+			}
+
+			.v1 {
+				-webkit-animation : load_in .6s ease .4s 1 both;
+				-moz-animation    : load_in .6s ease .4s 1 both;
+				-o-animation      : load_in .6s ease .4s 1 both;
+				animation         : load_in .6s ease .4s 1 both;
+			}
+			.v2 {
+				-webkit-animation : load_in .6s ease .6s 1 both;
+				-moz-animation    : load_in .6s ease .6s 1 both;
+				-o-animation      : load_in .6s ease .6s 1 both;
+				animation         : load_in .6s ease .6s 1 both;
+			}
+			.v3 {
+				-webkit-animation : load_in .6s ease .8s 1 both;
+				-moz-animation    : load_in .6s ease .8s 1 both;
+				-o-animation      : load_in .6s ease .8s 1 both;
+				animation         : load_in .6s ease .8s 1 both;
+			}
+			.v4 {
+				-webkit-animation : load_in .6s ease 1s 1 both;
+				-moz-animation    : load_in .6s ease 1s 1 both;
+				-o-animation      : load_in .6s ease 1s 1 both;
+				animation         : load_in .6s ease 1s 1 both;
+			}
+
+			@-webkit-keyframes load_left {
+				0%   { opacity: 0; -webkit-transform: translate3d(100%,0,0); }
+				20%  { opacity: 0; }
+				100% { -webkit-transform: translate3d(0,0,0); }
+			}
+			@-webkit-keyframes load_in {
+				0%   { opacity: 0; -webkit-transform: translate3d(0,-1.375em,0); }
+				20%  { opacity: 0; }
+				100% { -webkit-transform: translate3d(0,0,0); }
+			}
+
+			@-moz-keyframes load_left {
+				0%   { opacity: 0; -moz-transform: translate3d(100%,0,0); }
+				20%  { opacity: 0; }
+				100% { -moz-transform: translate3d(0,0,0); }
+			}
+			@-moz-keyframes load_in {
+				0%   { opacity: 0; -moz-transform: translate3d(0,-1.375em,0); }
+				20%  { opacity: 0; }
+				100% { -moz-transform: translate3d(0,0,0); }
+			}
+
+			@-o-keyframes load_left {
+				0%   { opacity: 0; -o-transform: translate3d(100%,0,0); }
+				20%  { opacity: 0; }
+				100% { -o-transform: translate3d(0,0,0); }
+			}
+			@-o-keyframes load_in {
+				0%   { opacity: 0; -o-transform: translate3d(0,-1.375em,0); }
+				20%  { opacity: 0; }
+				100% { -o-transform: translate3d(0,0,0); }
+			}
+
+			@keyframes load_left {
+				0%   { opacity: 0; -webkit-transform: translate3d(100%,0,0); }
+				20%  { opacity: 0; }
+				100% { -webkit-transform: translate3d(0,0,0); }
+			}
+			@keyframes load_in {
+				0%   { opacity: 0; -webkit-transform: translate3d(0,-1.375em,0); }
+				20%  { opacity: 0; }
+				100% { -webkit-transform: translate3d(0,0,0); }
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="intro">
+			<h1>PROJECT NAME</h1>
+			<p>Visuals: Our proposed look-and-feel.</p>
+			<p class="note">REMINDER: These visuals represent our targets, they are not intended to be replicated <em>exactly</em> in the final working website. If you're unsure why this is the case, please ask us.</p>
+		</div><!-- .intro -->
+		
+		<!--
+		<div class="resources">
+			<div class="visuals">
+				<ul>
+					<li><a href="#homepage">Homepage</a></li>
+					<li><a href="#generic">Generic page</a></li>
+				</ul>
+			</div>
+		</div>
+		-->
+		
+		<div class="page-type homepage signed-off">
+			<h2>Home Page</h2>
+			<p class="url">http://projecturl.etc</p>
+			
+			<div class="version v1">
+				<a href="homepage-v1.htm">
+					<h3>Version 1</h3>
+					<img src="thumbnails/homepage-v1.jpg" alt="" />
+				</a>
+			</div>
+			
+			<div class="version v2 signed-off">
+				<a href="homepage-v2.htm">
+					<h3>Version 2</h3>
+					<img src="thumbnails/homepage-v2.jpg" alt="" />
+				</a>
+			</div>
+			
+			<div class="version v3">
+				<a href="homepage-v1.htm">
+					<h3>Version 3</h3>
+					<img src="thumbnails/homepage-v1.jpg" alt="" />
+				</a>
+			</div>
+		</div><!-- .page-type.homepage -->
+		
+		<div class="page-type generic">
+			<h2>Generic Page</h2>
+			<p class="url">The generic page is potentially used in a number of places.</p>
+			
+			<div class="version v1">
+				<a href="homepage-v1.htm">
+					<h3>Version 1</h3>
+					<img src="thumbnails/homepage-v1.jpg" alt="" />
+				</a>
+			</div>
+			
+			<div class="version v2 signed-off">
+				<a href="homepage-v2.htm">
+					<h3>Version 2</h3>
+					<img src="thumbnails/homepage-v2.jpg" alt="" />
+				</a>
+			</div>
+		</div><!-- .page-type.homepage -->
+		
+		<div class="credit">
+			<a href="http://viewcreative.co.uk"><img src="assets/logo_viewcreativeagency.png" alt="View Creative Agency" /></a>
+		</div>
+	</body>
+</html>

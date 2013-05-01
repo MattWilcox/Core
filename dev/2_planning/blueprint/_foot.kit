@@ -1,0 +1,27 @@
+	</div><!-- .container -->
+
+	<div class="footer">
+		<h1>Website Footer</h1>
+		<div class="helper">
+			<div>
+				<p class="rationale">Information that's relevant throughout the website.</p>
+				<ul class="content-types">
+					<li>Social media links (if any).</li>
+					<li>Link to <a href="/contact.html">contact page</a>.</li>
+					<li>Link to <a href="/terms-and-conditions.html">Terms &amp; Conditions</a>.</li>
+					<li>Company and VAT numbers.</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- javascript
+				 NOTE:      Javascript goes at the bottom of the page to enhance the perception of speed with page load.
+										Most browsers are limited to two simultaneous http requests, so if we loaded the JS before the HTML
+										the page would appear to load slowly (as it loads non-visible data before the visible data).
+				 REFERENCE: http://developer.yahoo.com/performance/rules.html#js_bottom
+				 NOTE:      I usually use lazy-loading so that a JS file scans the DOM, knows what JS files are needed and loads only
+										those. JS manages itself, the HTML doesn't need to change, no unused resources are ever loaded. -->
+
+		<script src="/assets/javascript/initiate.js"></script>
+	</body>
+</html>
