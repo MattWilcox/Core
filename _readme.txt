@@ -1,5 +1,8 @@
 This is the root directory of the entire project, it should be under version control.
 
+To learn more about our process of creating a website please read:
+0_documentation/1_building_a_website-overview.pdf
+
 NOTE: the following domains are set up during local development:
 
 	http://projecturl.blueprint.local === dev/2_planning/blueprint === content planning
