@@ -5,7 +5,7 @@
 	
 /* =html =body */
 	html {
-		background-color: $color_1; color: $color_2; }
+		background-color: $color_bg_main; color: $color_text; }
 	body {
 		width: 90%; margin: 0 auto; }
 
@@ -41,10 +41,8 @@
 		font: .85em/1 Courier, monospace; color: #006; }
 
 /* =a */
-	a {
-		@include transition (box-shadow linear 0.2s, background-color linear 0.2s); }
 	a:link,
-	a:visited { color: #66b; text-decoration: none; }
+	a:visited { color: $color_link; text-decoration: none; }
 	a:hover   { text-decoration : underline; }
 	a:focus   { box-shadow: 0 0 6px rgba(255,255,255,1); background-color: #fff; outline: 0; }
 	a:active  {  }

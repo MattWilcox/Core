@@ -178,30 +178,39 @@ AddType text/x-vcard                        vcf
 # Since we're sending far-future expires, we don't need ETags for
 # static content.
 #   developer.yahoo.com/performance/rules.html#etags
-FileETag None
+  FileETag None
 
 # ----------------------------------------------------------------------
-# Rewrites
+# Security
 # ----------------------------------------------------------------------
 
-<IfModule mod_rewrite.c>
-  Options +FollowSymlinks
+# Disallow directory listings
+  Options -Indexes
+
+# Prevent hacking into the system via any .svn folders.
   RewriteEngine On
-  #This is here to prevent hacking into the system via the 
-  #exisiting .svn folders. 
   RewriteRule (\.svn)/(.*?) - [F,L]
 
-  # Adaptive-Images -----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------
+# Rewrites (NOTE: RewriteEngine is already on)
+# ----------------------------------------------------------------------
+
+# Force removal of www. prefix
+  #RewriteCond %{HTTP_HOST} !^domain.com$ [NC]
+  #RewriteRule ^(.*)$ http://domain.com/$1 [L,R=301]
+
+# Adaptive-Images -----------------------------------------------------------------------------------
 
   # Add any directories you wish to omit from the Adaptive-Images process on a new line, as follows:
   # RewriteCond %{REQUEST_URI} !ignore-this-directory
   # RewriteCond %{REQUEST_URI} !and-ignore-this-directory-too
   
-  RewriteCond %{REQUEST_URI} !assets
+  # RewriteCond %{REQUEST_URI} !assets
     
   # Send any GIF, JPG, or PNG request that IS NOT stored inside one of the above directories
   # to adaptive-images.php so we can select appropriately sized versions
-  RewriteRule \.(?:jpe?g|gif|png)$ adaptive-images.php
 
-  # END Adaptive-Images -------------------------------------------------------------------------------
+  # RewriteRule \.(?:jpe?g|gif|png)$ adaptive-images.php
+
+# END Adaptive-Images -------------------------------------------------------------------------------
 </IfModule>

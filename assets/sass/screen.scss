@@ -4,12 +4,9 @@
 	This style sheet establishes the core styles used for all resolutions before declaring the baseline 320px mobile layout.
 	
 	--------------------------------------------------------------------------------------------------------------------------
-	FILE INFO
-	Last updated:     2012/08/14
-	Last updated by:  Matt Wilcox
-
-	--------------------------------------------------------------------------------------------------------------------------
 	STYLEGUIDE
+	--------------------------------------------------------------------------------------------------------------------------
+
 	Indentation uses tabs [why: http://lea.verou.me/2012/01/why-tabs-are-clearly-superior/]
 
 	Rules obey the following anatomy:
@@ -40,7 +37,6 @@
 
 	----------------------------------------------------------------------------------------------------------------------- */
 
-	@import "bourbon/_bourbon";
 	@import "_variables";
 	@import "_mixins";
 	@import "_reset";
@@ -54,10 +50,6 @@
   NOTE: Modules are discrete sections of data that may be used on any page, e.g., "Latest News"
   ----------------------------------------------------------------------------------------------------------------------- */
 
-/* while we're building, let's see a baseline */
-	html {
-		background-image : url(../images/_baseline-22.png); }
-
 /* =lists */
 	.container {
 		ul, ol {
@@ -66,7 +58,7 @@
 	}
 
 /* =website header */
-	#site_context {
+	.site_context {
 		margin-bottom : 0;
 
 		.title {
@@ -81,8 +73,8 @@
 		margin-bottom : 1.375em;
 		margin-bottom : 1.375rem;
 
-		&>a,
-		&>img {
+		& > a,
+		& > img {
 			display: block;
 		}
 
