@@ -15,10 +15,10 @@ t[h]}if(f.isEmptyObject(t)){var u=s.handle;u&&(u.elem=null),delete s.events,dele
 // Media Queries Polyfill http://www.modernizr.com/docs/#load
 Modernizr.load({
   test : Modernizr.mq('(min-width)'),
-  nope : ['assets/javascript/polyfills/respond.min.js']
+  nope : ['/assets/javascript/polyfills/respond.min.js']
 });
 
 $(document).ready(function(){
   // we always want to load progressive enhancements at the end of the load queue
-  $.requireJs('assets/javascript/progressive-enhancement.js');
+  $.requireJs('/assets/javascript/progressive-enhancement.js');
 });
