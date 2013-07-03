@@ -36,7 +36,8 @@
 	@font-face {
 		font-family: 'ArvoRegular';
 		src: url('../fonts/Arvo-Regular-webfont.eot');
-		src: url('../fonts/Arvo-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+		src: local("ArvoRegular"),
+		     url('../fonts/Arvo-Regular-webfont.eot?#iefix') format('embedded-opentype'),
 		     url('../fonts/Arvo-Regular-webfont.woff') format('woff'),
 		     url('../fonts/Arvo-Regular-webfont.ttf') format('truetype'),
 		     url('../fonts/Arvo-Regular-webfont.svg#ArvoRegular') format('svg');

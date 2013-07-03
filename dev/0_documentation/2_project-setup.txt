@@ -1,1 +1,0 @@
-This file is not relevant for the general public. It's just instructions for our internal version control and local machine set-up at View Creative.
