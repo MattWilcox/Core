@@ -44,6 +44,19 @@
 		font-weight: normal; font-style: normal;
 	}
 
+	// Oh hello fancy ampersands! ( http://vimeo.com/69531448 )
+	@font-face {
+		font-family: "Helvetica"; // the requested font family
+		src: local("Zapfino");    // the replacement ampersand font family
+		unicode-range: U+26;      // the unicode character to match
+	}
+	// Now fix busted firefox that doesn't understand unicode ranges and uses the wrong font
+	@font-face {
+		font-family: "Helvetica";
+		src: local("Helvetica");
+		unicode-range: U+10FFFF; // match last unicode character except the ampersand
+	}
+
 	html,	input, select, textarea { /* font-size: 16px, line-height: 22px */
 		font: 100%/1.375 $fontfamily_helvetica;
 		/* hyphenations now work! http://www.quirksmode.org/blog/archives/2012/11/hyphenation_wor.html */
