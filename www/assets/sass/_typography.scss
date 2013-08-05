@@ -28,10 +28,13 @@
 	}
 	
 	/* custom fonts
-	 * The following fonts included are copyrighted by the vendor listed below.
-	 * @vendor:     Anton Koovit
-	 * @vendorurl:  http://anton.korkork.com/
-	 * @licenseurl: http://www.fontsquirrel.com/license/arvo */
+	   NOTE: Don't use the normal FontSquirrel CSS! Do this instead:
+	         http://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple
+
+	         Other tips and tricks from here:
+	         http://vimeo.com/69531448
+	         https://docs.google.com/viewer?url=http%3A%2F%2Fcomplexspiral.com%2Fevents%2Farchive%2F2013%2Fcssday%2Ffontface.pdf
+	*/
 	
 	@font-face {
 		font-family: 'ArvoRegular';
