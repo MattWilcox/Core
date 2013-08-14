@@ -11,20 +11,35 @@
 	$fontfamily_helvetica : "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 /* scss:
-	mixins, so we can just @include header styles in other selectors later on */
+	heading styles */
 	.h1 {
-		/* em fallback */ font-size: 2em;
-		font-size: 2rem; line-height: 1.375;
+		margin: 0 0 1.375em;
+		font-size: 34px; line-height: 32px;
+		font-family: $fontfamily_arvo; text-transform: uppercase; font-weight: normal; color: $color_text_dark;
 	}
 
 	.h2 {
-		/* em fallback */ font-size: 1.75em;
-		font-size: 1.75rem; line-height: 1.5714285714;
+		margin: 0 0 1.375em;
+		font-size: 25px; line-height: 26px;
+		font-family: $fontfamily_arvo; text-transform: uppercase; font-weight: normal; color: $color_text_dark;
 	}
 
 	.h3 {
-		/* em fallback */ font-size: 1.375em;
-		font-size: 1.375rem; line-height : 1;
+		margin: 0 0 1.375em;
+		font-size: 20px; line-height : 26px;
+		font-family: $fontfamily_arvo; text-transform: uppercase; font-weight: bold; color: $color_text_dark;
+	}
+
+	.h4 {
+		margin: 0 0 1.375em;
+		font-size: 20px; line-height : 26px;
+		font-family: $fontfamily_arvo; text-transform: uppercase; font-weight: bold; color: $color_text_light;
+	}
+
+	.h5 {
+		margin: 0 0 1.375em;
+		font-size: 16px; line-height : 24px;
+		font-family: $fontfamily_arvo; text-transform: uppercase; font-weight: bold; color: $color_text_dark;
 	}
 	
 	/* custom fonts
@@ -71,20 +86,16 @@
 	}
 		 
 	h1, h2, h3, h4, h5, h6 {
-		/* em fallback */ margin-top: 1.375em; margin-bottom : 1.375em;
-		margin-top: 1.375rem; margin-bottom : 1.375rem;
-		font-family: $fontfamily_arvo; text-transform: uppercase; font-weight: normal;
+		// NOTE: Do not apply styles directly here! ALWAYS style headings by @extending one of the above heading classes
 
 		/* Get fancy font features working: http://blogs.msdn.com/b/ie/archive/2012/01/09/css-corner-using-the-whole-font.aspx */
 		-moz-font-feature-settings    : "liga=1, dlig=1";
 		-ms-font-feature-settings     : "liga", "dlig";
 		-webkit-font-feature-settings : "liga", "dlig";
 		-o-font-feature-settings      : "liga", "dlig";
-		font-feature-settings         : "liga", "dlig"; }
+		font-feature-settings         : "liga", "dlig";
+	}
 	
-	h1 { @extend .h1; }
-	h2 { @extend .h2; }
-	h3, h4, h5, h6 { @extend .h3; }
-	p, ul, blockquote { 
+	p, ul, ol, blockquote { 
 		/* em fallback */ margin-bottom: 1.375em;
 		margin-bottom: 1.375rem; }

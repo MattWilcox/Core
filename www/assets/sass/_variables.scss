@@ -1,6 +1,14 @@
 // SCSS: colours (use memorable names, abstracts are too hard to work with)
 
-$color_text    : rgba(60,60,60,1);
-$color_heading : rgba(205,205,205,1);
-$color_link    : #66b;
-$color_bg_main : #fff;
+$color_text_light  : #b7b7b7;
+$color_text_medium : #898a8a;
+$color_text_dark   : #5e5e5d;
+
+$color_link : #45b;
+
+$color_bg_main   : #fff;
+$color_bg_faded  : rgba(255,255,255,.8);
+$color_bg_light  : #fbfafa;
+$color_bg_medium : #ebeaea;
+
+$color_border_light : #dfdfdf;

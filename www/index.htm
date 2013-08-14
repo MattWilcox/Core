@@ -1,90 +1,90 @@
 <!DOCTYPE html>
 <html lang="en" class="home">
-<head>
-	<!-- meta information -->
-	<meta charset="utf-8" />
-	<meta name="author"
-	      content="AUTHOR" />
-	<meta name="description"
-	      content="DESCRIPTION" />
-	<meta name="robots"
-	      content="index,follow" />
-	<meta name="revisit-after"
-	      content="14 days" />
-	<meta name="country"
-	      content="UK" />
-	<meta name="language"
-	      content="en-GB" />
+	<head>
+		<!-- meta information -->
+		<meta charset="utf-8" />
+		<meta name="author"
+		      content="AUTHOR" />
+		<meta name="description"
+		      content="DESCRIPTION" />
+		<meta name="robots"
+		      content="index,follow" />
+		<meta name="revisit-after"
+		      content="14 days" />
+		<meta name="country"
+		      content="UK" />
+		<meta name="language"
+		      content="en-GB" />
 
-	<!-- Who worked on this? -->
-	<link type="text/plain" rel="author" href="/humans.txt" />
+		<!-- Who worked on this? -->
+		<link type="text/plain" rel="author" href="/humans.txt" />
 
-	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
-	<meta name="viewport"
-	      content="width=device-width,initial-scale=1">
+		<!-- Mobile viewport optimized: j.mp/bplateviewport -->
+		<meta name="viewport"
+		      content="width=device-width,initial-scale=1">
 
-	<!-- Styling for all devices -->
-	<link rel="stylesheet" media="screen" href="/assets/css/screen.css" />
-	<link rel="stylesheet" media="print"  href="/assets/css/print.css" />
+		<!-- Styling for all devices -->
+		<link rel="stylesheet" media="screen" href="/assets/css/screen.css" />
+		<link rel="stylesheet" media="print"  href="/assets/css/print.css" />
 
-	<!-- Deal with IE < 9 which can't do media queries. Given up on respond.js, it's too unreliable and causes crashes -->
-	<!--[if IE 8 & (!IEMobile)]>
-		<link rel="stylesheet" href="/assets/css/screen.ie8.css" />
-	<![endif]-->
+		<!-- Deal with IE < 9 which can't do media queries. Given up on respond.js, it's too unreliable and causes crashes -->
+		<!--[if IE 8 & (!IEMobile)]>
+			<link rel="stylesheet" href="/assets/css/screen.ie8.css" />
+		<![endif]-->
 
-	<!-- Favicons [ See: http://www.jonathantneal.com/blog/understand-the-favicon/ ]
-	     TL;DR: put a 32x32 favicon.ico file in root for IE, everything else uses the PNGs declared here -->
-	<!-- Favicon for Apple -->
-	<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
-	<!-- Win8 tiles -->
-	<meta name="msapplication-TileColor" content="#000" />
-	<meta name="msapplication-TileImage" content="/assets/images/ms-tileicon.png" />
-	<!-- Favicon for everything else -->
-	<link rel="icon" href="/assets/images/favicon.png" />
+		<!-- Favicons [ See: http://www.jonathantneal.com/blog/understand-the-favicon/ ]
+		     TL;DR: put a 32x32 favicon.ico file in root for IE, everything else uses the PNGs declared here -->
+		<!-- Favicon for Apple -->
+		<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+		<!-- Win8 tiles -->
+		<meta name="msapplication-TileColor" content="#000" />
+		<meta name="msapplication-TileImage" content="/assets/images/ms-tileicon.png" />
+		<!-- Favicon for everything else -->
+		<link rel="icon" href="/assets/images/favicon.png" />
 
-	<!-- The Adaptive-Images JavaScript
-	     NOTE:      Used to automatically provide re-scaled images appropriate to the visitors device
-	     REFERENCE: http://adaptive-images.com -->
-	<script>document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/';</script>
+		<!-- The Adaptive-Images JavaScript
+		     NOTE:      Used to automatically provide re-scaled images appropriate to the visitors device
+		     REFERENCE: http://adaptive-images.com -->
+		<script>document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/';</script>
 
-	<!-- google analytics
-	     NOTE:      This goes in the head because it's the asynchronous loader, read more here:
-	     REFERENCE: http://code.google.com/apis/analytics/docs/tracking/asyncTracking.html -->
-	<script>
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'CODEHERE']);
-		_gaq.push(['_trackPageview']);
-		_gaq.push(['_trackPageLoadTime']);
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
+		<!-- google analytics
+		     NOTE:      This goes in the head because it's the asynchronous loader, read more here:
+		     REFERENCE: http://code.google.com/apis/analytics/docs/tracking/asyncTracking.html
+		<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'CODEHERE']);
+			_gaq.push(['_trackPageview']);
+			_gaq.push(['_trackPageLoadTime']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> -->
 
-	<!-- Modernizr also goes in the head, to allow the HTML5 shiv to work for IE, and prevent FOUC.
-	     REFERENCE: http://www.modernizr.com/docs/#installing -->
-	<script src="/assets/javascript/modernizr.custom.js"></script>
+		<!-- Modernizr also goes in the head, to allow the HTML5 shiv to work for IE, and prevent FOUC.
+		     REFERENCE: http://www.modernizr.com/docs/#installing -->
+		<script src="/assets/javascript/modernizr.custom.js"></script>
 
-	<title>PAGE TITLE</title>
-</head>
+		<title>PAGE TITLE</title>
+	</head>
 
-<body lang="en-GB" class="home">
-	<div class="container">
-		<div id="site_context" class="html5_header">
-			<h1 class="heading"><a href="/">WEBSITE TITLE<span></span></a></h1>
-			<p class="tagline">Tagline, or brief introduction to the website.</p>
-		</div><!-- #site_context.html5_header -->
-	</div><!-- .container -->
+	<body lang="en-GB">
+		<div class="section site_context">
+			<div class="container">
+				<h1 class="heading"><a href="/">WEBSITE TITLE</a></h1>
+				<p class="tagline">Tagline, or brief introduction to the website.</p>
+			</div><!-- .container -->
+		</div><!-- .section.site_context -->
 
-	<!-- javascript
-			 NOTE:      Javascript goes at the bottom of the page to enhance the perception of speed with page load.
-			            Most browsers are limited to two simultaneous http requests, so if we loaded the JS before the HTML
-			            the page would appear to load slowly (as it loads non-visible data before the visible data).
-			 REFERENCE: http://developer.yahoo.com/performance/rules.html#js_bottom
-			 NOTE:      I usually use lazy-loading so that a JS file scans the DOM, knows what JS files are needed and loads only
-			            those. JS manages itself, the HTML doesn't need to change, no unused resources are ever loaded. -->
+		<!-- javascript
+				 NOTE:      Javascript goes at the bottom of the page to enhance the perception of speed with page load.
+				            Most browsers are limited to two simultaneous http requests, so if we loaded the JS before the HTML
+				            the page would appear to load slowly (as it loads non-visible data before the visible data).
+				 REFERENCE: http://developer.yahoo.com/performance/rules.html#js_bottom
+				 NOTE:      I usually use lazy-loading so that a JS file scans the DOM, knows what JS files are needed and loads only
+				            those. JS manages itself, the HTML doesn't need to change, no unused resources are ever loaded. -->
 
-	<script src="/assets/javascript/initiate.js"></script>
-</body>
+		<script src="/assets/javascript/initiate.js"></script>
+	</body>
 </html>

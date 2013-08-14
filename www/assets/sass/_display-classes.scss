@@ -1,34 +1,41 @@
 /* =display-classes -----------------------------------------------------------------------------------------------------
   NOTE: These are to be avoided if at all possible, it is rare they are acceptable. Do not use them for page layout!
   ----------------------------------------------------------------------------------------------------------------------- */
-	.dc_left   { float: left; margin-right: 1em; }
-	.dc_right  { float: right; margin-left: 1em; }
 
-	.dc_small  { width: 20%; }
-	.dc_medium { width: 40%; }
-	.dc_large  { width: 60%; }
+	/* left or right */
+		.dc_left   { float: left; margin-right: 1em; }
+		.dc_right  { float: right; margin-left: 1em; }
 
-	.dc_hide-text {
-		text-indent: 105%; white-space: nowrap; overflow: hidden;
-	}
-	.dc_hide-element {
-		position: absolute; left: -999em; overflow: hidden;
-	}
-	.dc_clearfix {
-		&:after {
-			content: "";
-			display: table;
-			clear: both;
+	/* big and small */
+		.dc_small  { width: 20%; }
+		.dc_medium { width: 40%; }
+		.dc_large  { width: 60%; }
+
+	/* hiding things */
+		.dc_hide-text {
+			text-indent: -999em; overflow: hidden;
 		}
-		zoom: 1;
-	}
+		.dc_hide-element {
+			position: absolute; left: -999em; overflow: hidden;
+		}
 
-	.dc_horizontal-list {
-		margin: 0;
-		list-style-type: none;
+	/* clearing things */
+		.dc_clearfix {
+			&:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			zoom: 1;
+		}
 
-		li {
-			float: left;
+	/* make lists horizontal */
+		.dc_horizontal-list {
 			margin: 0;
+			list-style-type: none;
+
+			li {
+				float: left;
+				margin: 0;
+			}
 		}
-	}
