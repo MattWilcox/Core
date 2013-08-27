@@ -76,13 +76,13 @@
 	}
 
 	html,	input, select, textarea { /* font-size: 16px, line-height: 22px */
-		font: 100%/1.375 $fontfamily_helvetica;
+		font: 100%/1.375 $fontfamily_aller;
 		/* hyphenations now work! http://www.quirksmode.org/blog/archives/2012/11/hyphenation_wor.html */
-		hyphens: auto;
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
-		-o-hyphens: auto;
+		hyphens         : none;
+		-webkit-hyphens : none;
+		-moz-hyphens    : none;
+		-ms-hyphens     : none;
+		-o-hyphens      : none;
 	}
 		 
 	h1, h2, h3, h4, h5, h6 {
